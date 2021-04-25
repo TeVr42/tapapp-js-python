@@ -1,0 +1,87 @@
+body {
+    text-align: center;
+    color: #1f3c5c;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+h1, h2, h3 {
+    font-family: 'Original Surfer', cursive;
+}
+h1{
+    font-size: 5rem;
+}
+h2 {
+    font-size: 3rem;
+}
+h3 {
+    font-size: 2rem;
+}
+.info-text {
+    font-size: 1.2rem;
+    text-align: justify;
+    margin: 0 35%;
+    width: 30%;  
+}
+.title-margin {
+    margin: 70px 0;
+}
+.title-margin-top {
+    margin: 70px 0 0;
+}
+.title-margin-bottom {
+    margin: 0 0 70px;
+}
+
+.btn {
+    width: 30%;
+    color: #1f3c5c;
+    border-color: #1f3c5c;
+    margin: 5px 35%;
+    border-width: 2px;
+}
+.btn-dark {
+    background-color: #1f3c5c;
+    color: #fff;
+}
+.btn:hover {
+    color: #fff;
+    background-color: #1f3c5c;
+    border-color: #1f3c5c;
+}
+
+.kruh {
+    width: 5%;
+    position: absolute;
+}
+
+.velky-kruh {
+    width: 6%;
+}
+
+.kruh-tlacitko {
+    position: absolute;
+    left: 35%;
+    top: 20%;
+    width: 30%;
+}
+
+@media only screen and (max-width: 600px) {
+h1 {
+    font-size: 3.5rem;
+}
+.info-text {
+    margin: 0 15%;
+    width: 70%;  
+}
+.kruh {
+    width: 15%;
+}
+.btn {
+    width: 70%;
+    margin: 5px 15%;
+}
+.velky-kruh {
+    width: 12%;
+}
+}

@@ -1,0 +1,12 @@
+{% include "header.html" %}
+
+<body>
+
+	<h1 class="title-margin"> Vyber si hru </h1>
+	<a href="{{ url_for('hra1') }}"><button class="btn btn-outline-info btn-lg">Postřeh 👀</button></a>
+    <a href="{{ url_for('hra2') }}"><button class="btn btn-outline-info btn-lg">Přesnost 🎯</button></a>
+    <a href="{{ url_for('hra3') }}"><button class="btn btn-outline-info btn-lg">Rychlost ⏱</button></a>
+    <a href="{{ url_for('info') }}"><button class="btn btn-dark btn-lg">Jak hrát ❔ </button></a>
+
+  </body>
+</html>
