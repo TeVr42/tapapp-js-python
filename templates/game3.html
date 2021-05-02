@@ -1,18 +1,20 @@
 {% include "header.html" %}
-
+{% if not game: %}
 <body>
-    <h2 id="stopky" style="visibility: hidden"> 00:00 </h2>
-	<h1 id="napis-rychlost"> Nachystat</h1>
+	<h1 class="title-margin"> Nachystat</h1>
+    <a href="{{ url_for('hra3', game=1) }}"><button class="btn btn-outline-dark btn-lg">Start 🏁</button></a>
+    <a href="{{ url_for('home')}}"><button class="btn btn-dark btn-lg">Domů 🏠 </button></a>
 
-	<button id="tlZnovu" class="btn btn-outline-info btn-lg" onclick="HratZnovu()" style="visibility: hidden">Hrát znovu ⏱</button>
-
-	<button id="tlHrat" class="btn btn-outline-info btn-lg" onclick="Hrat()">Start 🏁</button> 
-
-    <a href="{{ url_for('home')}}"><button id="domu-rychlost" class="btn btn-dark btn-lg">Domů 🏠 </button></a>
-
-    <img id="bily-kruh" class="kruh-tlacitko" src="{{ url_for('static', filename='images/k-bily.png') }}" style="visibility: hidden" onclick="PredcasneKliknuti()">
-    <img id="kruh-tlacitko" class="kruh-tlacitko" src="{{ url_for('static', filename='images/k7.png') }}" style="visibility: hidden" onclick="SpravneKliknuti()">
-
-    <script src="{{ url_for('static', filename='script-g3.js') }}"></script>
   </body>
+{% else: %}
+<body onload="Hrat()">
+    <h1 id="hlavniNapis" class="title-margin" style="visibility: hidden"> Moc brzo!</h1>
+	<button id="tlacitkoZnovu" class="btn btn-outline-dark btn-lg" onclick="HratZnovu()" style="visibility: hidden">Hrát znovu ⏱</button>
+    <a href="{{ url_for('home')}}" id="anchorDomu" style="visibility: hidden"><button id="tlacitkoDomu" class="btn btn-dark btn-lg" style="visibility: hidden">Domů 🏠 </button></a>
+    <img id="bilykruh" class="kruh-tlacitko" src="{{ url_for('static', filename='images/k-bily.png') }}" style="visibility: hidden" onclick="KlikutiKonec()">
+    <img id="tlacitkoKruh" class="kruh-tlacitko" src="{{ url_for('static', filename='images/k7.png') }}" style="visibility: hidden" onclick="SpravneKliknuti()">
+
+    <script src="{{ url_for('static', filename='script3.js') }}"></script>
+</body>
+{% endif %}
 </html>

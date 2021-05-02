@@ -1,17 +1,21 @@
 {% include "header.html" %}
 
+{% if not game: %}
 <body>
-	<h2 id="skore" style="visibility: hidden"> 00 </h2>
-	<h1 id="napis-postreh"> Zvol si level </h1>
-
+	<h1 class="title-margin"> Zvol si level </h1>
+    <a href="{{ url_for('hra1', game=1, speed=800) }}"><button class="btn btn-outline-dark btn-lg">Začátečník 🐢 </button></a>
+    <a href="{{ url_for('hra1', game=1, speed=600) }}"><button class="btn btn-outline-dark btn-lg">Pokročilý 🦎 </button></a>
+    <a href="{{ url_for('hra1', game=1, speed=400) }}"><button class="btn btn-outline-dark btn-lg">Expert 🦕 </button></a>
+    <a href="{{ url_for('hra1', game=1, speed=200) }}"><button class="btn btn-outline-dark btn-lg">Mistr 🦖 </button></a>
+    <a href="{{ url_for('home')}}" ><button class="btn btn-dark btn-lg">Domů 🏠</button></a>
+</body>
+{% else: %}
+<body onload="setInterval(VytvorKruh, {{ speed }})">
+	<h2 id="skoreNapis"> 00 </h2>
+    <h1 id="hlavniNapis" style="visibility: hidden" class="title-margin-bottom"> Uklizeno! </h1>
 	<button id="tlacitkoZnovu" class="btn btn-outline-info btn-lg" onclick="HratZnovu()" style="visibility: hidden">Hrát znovu 🐍</button>
-
-	<button id="button1" class="btn btn-outline-info btn-lg" onclick="setInterval(VytvorKruh, 750)">Začátečník 🐢 </button>
-    <button id="button2" class="btn btn-outline-info btn-lg" onclick="setInterval(VytvorKruh, 500)">Pokročilý 🦎 </button>
-    <button id="button3" class="btn btn-outline-info btn-lg" onclick="setInterval(VytvorKruh, 400)">Expert 🦕 </button>
-    <button id="button4" class="btn btn-outline-info btn-lg" onclick="setInterval(VytvorKruh, 200)">Mistr 🦖 </button>
-    <a id="anchor-postreh" href="{{ url_for('home')}}" ><button  id="domu-postreh" class="btn btn-dark btn-lg">Domů 🏠</button></a>
-
-    <script src="{{ url_for('static', filename='script-g1.js') }}"></script>
-  </body>
+    <a id="anchorDomu" href="{{ url_for('home')}}" style="visibility: hidden"><button  id="tlacitkoDomu" class="btn btn-dark btn-lg" style="visibility: hidden">Domů 🏠</button></a>
+<script src="{{ url_for('static', filename='script1.js') }}"></script>
+</body>
+{% endif %}
 </html>

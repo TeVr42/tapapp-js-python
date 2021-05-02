@@ -1,18 +1,15 @@
-var bilyKruh = document.getElementById("bily-kruh");
-var velkyKruh = document.getElementById("kruh-tlacitko");
+var bilyKruh = document.getElementById("bilykruh");
+var velkyKruh = document.getElementById("tlacitkoKruh");
 
-var tlacitkoZnovu = document.getElementById("tlZnovu");
-var tlacitkoHrat = document.getElementById("tlHrat");
-var napis = document.getElementById("napis-rychlost");
-var stopkyNapis = document.getElementById("stopky");
-var tlacitkoDomu = document.getElementById("domu-rychlost");
+var tlacitkoZnovu = document.getElementById("tlacitkoZnovu");
+var napis = document.getElementById("hlavniNapis");
+var tlacitkoDomu = document.getElementById("tlacitkoDomu");
+var anchorDomu = document.getElementById("anchorDomu");
 
 var start;
 var hraBezi = true;
 
 function Hrat() {
-    tlacitkoHrat.remove();
-    Schovat([napis, tlacitkoDomu]);
     Zviditelnit([bilyKruh]);
     var nahodnyCas = Math.floor(Math.random() * 8000) + 500;
     setTimeout(SpustitOdpocet, nahodnyCas);
@@ -26,25 +23,18 @@ function SpustitOdpocet() {
     }
 }
 
-function PredcasneKliknuti() {
-    Konec();
-    napis.textContent = "Moc brzo!";
-}
-
 function SpravneKliknuti() {
-    Konec();
+    KlikutiKonec();
     var prodleva = (Date.now() - start) + " milisekund";
     napis.textContent = prodleva;
     napis.style.fontSize = "3rem";
 }
 
 
-function Konec() {
+function KlikutiKonec() {
     hraBezi = false;
-    Zviditelnit([napis, tlacitkoZnovu, tlacitkoDomu]);
+    Zviditelnit([napis, tlacitkoZnovu, tlacitkoDomu, anchorDomu]);
     Schovat([velkyKruh, bilyKruh]);
-    tlacitkoZnovu.style.marginTop = "50px";
-
 }
 
 function Schovat(elements) {

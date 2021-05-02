@@ -1,7 +1,7 @@
 var zdrojeObrazku = ["k1.png", "k3.png", "k5.png", "k7.png", "k8.png", "k10.png"]
 
-var documentSirka = document.documentElement.clientWidth;
-var documentVyska = document.documentElement.clientHeight;
+var documentSirka;
+var documentVyska;
 var malaObrazovka = window.matchMedia("(max-width: 600px)");
 
 var kruhX;
@@ -14,17 +14,15 @@ var vteriny = 0;
 var minuty = 0;
 var rychlostVymazani;
 
-var velkyKruh = document.getElementById("velky-kruh");
+var velkyKruh = document.getElementById("velkyKruh");
 var hlavniBarva;
 
-var tlacitkoZnovu = document.getElementById("tZnovu");
-var tlacitka = [document.getElementById("tHrat1"), document.getElementById("tHrat2"),  document.getElementById("tHrat3")]
-
-var napis = document.getElementById("napis-presnost");
-var casNapis = document.getElementById("casovac");
-var tlacitkoDomu = document.getElementById("domu-presnost");
-var anchorDomu = document.getElementById("domu-a");
-var napisProcenta = document.getElementById("procenta-presnost");
+var tlacitkoZnovu = document.getElementById("tlacitkoZnovu");
+var napis = document.getElementById("hlavniNapis");
+var casNapis = document.getElementById("casovacNapis");
+var tlacitkoDomu = document.getElementById("tlacitkoDomu");
+var anchorDomu = document.getElementById("anchorDomu");
+var napisProcenta = document.getElementById("procentaNapis");
 
 function Hrat(rychlost) {
     var index = Math.floor(Math.random() * zdrojeObrazku.length);
@@ -34,11 +32,7 @@ function Hrat(rychlost) {
     velkyKruh.setAttribute("src", hlavniBarva);
     zdrojeObrazku.splice(index, 1);
 
-    for (i = 0; i < tlacitka.length; i++) {
-        tlacitka[i].remove();
-    }
     tlacitkoZnovu.style.position = "static";
-    napis.textContent = "Tvá barva:";
     Schovat([tlacitkoDomu, anchorDomu]);
     Zviditelnit([velkyKruh, casNapis, napisProcenta]);
     setInterval(GenerujKruhy, 200);
@@ -70,6 +64,9 @@ function VytvorVlastniKruh() {
 }
 
 function VytvorKruh(barva, akce) {
+    documentSirka = document.documentElement.clientWidth;
+    documentVyska = document.documentElement.clientHeight;
+
     kruh = document.createElement("img");
     kruh.setAttribute("src", barva);
     kruh.setAttribute("id", "Kruh" + i);
@@ -99,7 +96,6 @@ function VymazatKruh(kruhKVymazani) {
 function KlinutiNaKruh(event, skoreUprava) {
     skore = skore + skoreUprava;
     document.getElementById(event.target.id).remove();
-    var rychlost;
     if (malaObrazovka.matches) { 
     velkyKruh.style.width = 2 * skore + "%";
     } else {
@@ -125,7 +121,6 @@ function KonecHry() {
     Schovat(kruhy);
     velkyKruh.remove();
     Zviditelnit([tlacitkoZnovu, tlacitkoDomu, anchorDomu]);
-    tlacitkoZnovu.style.marginTop = "50px";
 }
 
 function PocitadloCasu() {
