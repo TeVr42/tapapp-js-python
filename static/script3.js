@@ -1,6 +1,4 @@
-var bilyKruh = document.getElementById("bilykruh");
 var velkyKruh = document.getElementById("tlacitkoKruh");
-
 var tlacitkoZnovu = document.getElementById("tlacitkoZnovu");
 var napis = document.getElementById("hlavniNapis");
 var tlacitkoDomu = document.getElementById("tlacitkoDomu");
@@ -10,14 +8,12 @@ var start;
 var hraBezi = true;
 
 function Hrat() {
-    Zviditelnit([bilyKruh]);
     var nahodnyCas = Math.floor(Math.random() * 8000) + 500;
     setTimeout(SpustitOdpocet, nahodnyCas);
 }
 
 function SpustitOdpocet() {
     if (hraBezi) {
-    Schovat([bilyKruh]);
     Zviditelnit([velkyKruh]);
     start = Date.now();
     }
@@ -34,7 +30,7 @@ function SpravneKliknuti() {
 function KlikutiKonec() {
     hraBezi = false;
     Zviditelnit([napis, tlacitkoZnovu, tlacitkoDomu, anchorDomu]);
-    Schovat([velkyKruh, bilyKruh]);
+    Schovat([velkyKruh]);
 }
 
 function Schovat(elements) {

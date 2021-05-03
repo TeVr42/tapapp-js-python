@@ -7,7 +7,15 @@
     <a href="{{ url_for('hra2', game=0, speed=0) }}"><button class="tlacitko btn btn-outline-dark btn-lg">Přesnost 🎯</button></a>
     <a href="{{ url_for('hra3', game=0) }}"><button class="tlacitko btn btn-outline-dark btn-lg">Rychlost ⏱</button></a>
     <a href="{{ url_for('info') }}"><button class="tlacitko btn btn-dark btn-lg">Jak hrát ❔ </button></a>
-
+    <div class="btn-group" style="margin-top: 20px">
+        {% if bg_color == "#4c586f": %}
+      <a href="{{ url_for('light') }}" class="tlacitko-mode-tmave btn" aria-current="page">Light</a>
+      <a href="{{ url_for('dark') }}" class="tlacitko-mode-svetle btn">Dark</a>
+        {% else: %}
+      <a href="{{ url_for('light') }}" class="tlacitko-mode-svetle btn" aria-current="page">Light</a>
+      <a href="{{ url_for('dark') }}" class="tlacitko-mode-tmave btn">Dark</a>
+        {% endif %}
+    </div>
 
   </body>
 </html>

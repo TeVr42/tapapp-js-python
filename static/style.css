@@ -1,6 +1,5 @@
 body {
     text-align: center;
-    color: #0b1925;
     text-align: center;
     font-family: 'Montserrat', sans-serif;
 }
@@ -28,20 +27,12 @@ h3 {
 .tlacitko {
     letter-spacing: 2px;
     width: 30%;
-    color: #0b1925;
-    border-color: #0b1925;
     margin: 5px 35%;
     border-width: 2px;
 }
 
-.btn-dark {
-    background-color: #0b1925;
-    color: #fff;
-}
-.btn:hover {
-    color: #fff;
-    background-color: #0b1925;
-    border-color: #0b1925;
+.tlacitko-mode-svetle {
+    border-width: 2px;
 }
 
 .kruh {

@@ -7,12 +7,11 @@
 
   </body>
 {% else: %}
-<body onload="Hrat()">
+<body onload="Hrat()" onclick="KlikutiKonec()">
     <h1 id="hlavniNapis" class="title-margin" style="visibility: hidden"> Moc brzo!</h1>
 	<button id="tlacitkoZnovu" class="tlacitko btn btn-outline-dark btn-lg" onclick="HratZnovu()" style="visibility: hidden">Hrát znovu ⏱</button>
     <a href="{{ url_for('home')}}" id="anchorDomu" style="visibility: hidden"><button id="tlacitkoDomu" class="tlacitko btn btn-dark btn-lg" style="visibility: hidden">Domů 🏠 </button></a>
-    <img id="bilykruh" class="kruh-tlacitko" src="{{ url_for('static', filename='images/k-bily.png') }}" style="visibility: hidden" onclick="KlikutiKonec()">
-    <img id="tlacitkoKruh" class="kruh-tlacitko" src="{{ url_for('static', filename='images/k7.png') }}" style="visibility: hidden" onclick="SpravneKliknuti()">
+    <img id="tlacitkoKruh" class="kruh-tlacitko" src="{{ url_for('static', filename='images/k10.png') }}" style="visibility: hidden" onclick="SpravneKliknuti()">
 
     <script src="{{ url_for('static', filename='script3.js') }}"></script>
 </body>
