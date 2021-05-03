@@ -115,11 +115,12 @@ function KlinutiNaKruh(event, skoreUprava) {
 }
 
 function KonecHry() {
-    hraBezi = false
+    hraBezi = false;
     napis.style.visibility = "visible";
     var kruhy = document.getElementsByClassName("kruh");
     Schovat(kruhy);
     velkyKruh.remove();
+    hlavniNapis.style.fontSize = "5rem";
     Zviditelnit([tlacitkoZnovu, tlacitkoDomu, anchorDomu]);
 }
 

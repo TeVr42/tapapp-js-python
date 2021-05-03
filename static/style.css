@@ -1,15 +1,16 @@
 body {
     text-align: center;
-    color: #1f3c5c;
+    color: #0b1925;
     text-align: center;
     font-family: 'Montserrat', sans-serif;
 }
 
 h1, h2, h3 {
-    font-family: 'Original Surfer', cursive;
+    font-family: 'Raleway', sans-serif;
 }
 h1{
     font-size: 5rem;
+    letter-spacing: 5px;
 }
 h2 {
     font-size: 3rem;
@@ -24,21 +25,23 @@ h3 {
     width: 30%;  
 }
 
-.btn {
+.tlacitko {
+    letter-spacing: 2px;
     width: 30%;
-    color: #1f3c5c;
-    border-color: #1f3c5c;
+    color: #0b1925;
+    border-color: #0b1925;
     margin: 5px 35%;
     border-width: 2px;
 }
+
 .btn-dark {
-    background-color: #1f3c5c;
+    background-color: #0b1925;
     color: #fff;
 }
 .btn:hover {
     color: #fff;
-    background-color: #1f3c5c;
-    border-color: #1f3c5c;
+    background-color: #0b1925;
+    border-color: #0b1925;
 }
 
 .kruh {

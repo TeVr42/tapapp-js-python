@@ -2,11 +2,12 @@
 
 <body>
 
-	<h1 class="title-margin"> Vyber si hru </h1>
-	<a href="{{ url_for('hra1', game=0, speed=0) }}"><button class="btn btn-outline-dark btn-lg">Postřeh 👀</button></a>
-    <a href="{{ url_for('hra2', game=0, speed=0) }}"><button class="btn btn-outline-dark btn-lg">Přesnost 🎯</button></a>
-    <a href="{{ url_for('hra3', game=0) }}"><button class="btn btn-outline-dark btn-lg">Rychlost ⏱</button></a>
-    <a href="{{ url_for('info') }}"><button class="btn btn-dark btn-lg">Jak hrát ❔ </button></a>
+	<h1 class="title-margin"> Jakou hru? </h1>
+	<a href="{{ url_for('hra1', game=0, speed=0) }}"><button class="tlacitko btn btn-outline-dark btn-lg">Postřeh 👀</button></a>
+    <a href="{{ url_for('hra2', game=0, speed=0) }}"><button class="tlacitko btn btn-outline-dark btn-lg">Přesnost 🎯</button></a>
+    <a href="{{ url_for('hra3', game=0) }}"><button class="tlacitko btn btn-outline-dark btn-lg">Rychlost ⏱</button></a>
+    <a href="{{ url_for('info') }}"><button class="tlacitko btn btn-dark btn-lg">Jak hrát ❔ </button></a>
+
 
   </body>
 </html>

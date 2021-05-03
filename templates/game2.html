@@ -3,22 +3,22 @@
 {% if not game: %}
 <body>
 
-	<h1 class="title-margin"> Jak rychle?</h1>
-    <a href="{{ url_for('hra2', game=1, speed=1600) }}"><button id="tHrat1" class="btn btn-outline-dark btn-lg">Pomalu 🐨</button></a>
-    <a href="{{ url_for('hra2', game=1, speed=1200) }}"><button id="tHrat2" class="btn btn-outline-dark btn-lg">Středně 🦝</button></a>
-    <a href="{{ url_for('hra2', game=1, speed=800) }}"><button id="tHrat3" class="btn btn-outline-dark btn-lg">Rychle 🐼</button></a>
+    <h1 class="title-margin"> Jak rychle?</h1>
+    <a href="{{ url_for('hra2', game=1, speed=1600) }}"><button id="tHrat1" class="tlacitko btn btn-outline-dark btn-lg">Pomalu 🐨</button></a>
+    <a href="{{ url_for('hra2', game=1, speed=1200) }}"><button id="tHrat2" class="tlacitko btn btn-outline-dark btn-lg">Středně 🦝</button></a>
+    <a href="{{ url_for('hra2', game=1, speed=800) }}"><button id="tHrat3" class="tlacitko btn btn-outline-dark btn-lg">Rychle 🐼</button></a>
 
-    <a href="{{ url_for('home')}}"><button class="btn btn-dark btn-lg">Domů 🏠</button></a>
+    <a href="{{ url_for('home')}}"><button class="tlacitko btn btn-dark btn-lg">Domů 🏠</button></a>
 
 </body>
 {% else: %}
 <body onload="Hrat( {{ speed }})">
     <h2 id="casovacNapis" style="visibility: hidden"> 00:00 </h2>
-    <h1 id="hlavniNapis">Tvá barva:</h1>
+    <h2 id="hlavniNapis">Tvůj kruh:</h2>
     <h3 id="procentaNapis" style="visibility: hidden"> 30 %</h3>
     <img id="velkyKruh" class="velky-kruh" style="visibility: hidden">
-    <button id="tlacitkoZnovu" class="title-margin-top btn btn-outline-dark btn-lg" onclick="HratZnovu()" style="visibility: hidden; position: fixed">Hrát znovu 🎯</button>
-    <a id="anchorDomu" href="{{ url_for('home')}}"><button id="tlacitkoDomu" class="btn btn-dark btn-lg">Domů 🏠</button></a>
+    <button id="tlacitkoZnovu" class="tlacitko title-margin-top btn btn-outline-dark btn-lg" onclick="HratZnovu()" style="visibility: hidden; position: fixed">Hrát znovu 🎯</button>
+    <a id="anchorDomu" href="{{ url_for('home')}}"><button id="tlacitkoDomu" class="tlacitko btn btn-dark btn-lg">Domů 🏠</button></a>
 
     <script src="{{ url_for('static', filename='script2.js') }}"></script>
   </body>

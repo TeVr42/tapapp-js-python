@@ -2,7 +2,6 @@ from flask import Flask, render_template, redirect, url_for, flash, abort
 
 app = Flask(__name__)
 
-
 def is_game_on(game):
     if game == 0:
         game_status = False
