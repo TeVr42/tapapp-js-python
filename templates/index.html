@@ -11,7 +11,7 @@
 
 <body>
 
-	<h1 class="title-margin"> Jakou hru? </h1>
+	<h1 class="title-margin"> Moje hry </h1>
 	<a href="{{ url_for('hra1', game=0, speed=0) }}"><button class="tlacitko btn btn-outline-dark btn-lg">Postřeh 👀</button></a>
     <a href="{{ url_for('hra2', game=0, speed=0) }}"><button class="tlacitko btn btn-outline-dark btn-lg">Přesnost 🎯</button></a>
     <a href="{{ url_for('hra3', game=0) }}"><button class="tlacitko btn btn-outline-dark btn-lg">Rychlost ⏱</button></a>
@@ -21,8 +21,12 @@
       <a href="{{ url_for('light') }}" class="tlacitko-mode-tmave btn" aria-current="page">Světlý</a>
       <a href="{{ url_for('dark') }}" class="tlacitko-mode-svetle btn">Tmavý</a>
         <a href="{{ url_for('pink') }}" class="tlacitko-mode-tmave btn">Růžový</a>
-        {% else: %}
+        {% elif mode == "light": %}
       <a href="{{ url_for('light') }}" class="tlacitko-mode-svetle btn" aria-current="page">Světlý</a>
+      <a href="{{ url_for('dark') }}" class="tlacitko-mode-tmave btn">Tmavý</a>
+      <a href="{{ url_for('pink') }}" class="tlacitko-mode-tmave btn">Růžový</a>
+        {% else: %}
+      <a href="{{ url_for('light') }}" class="tlacitko-mode-tmave btn" aria-current="page">Světlý</a>
       <a href="{{ url_for('dark') }}" class="tlacitko-mode-tmave btn">Tmavý</a>
       <a href="{{ url_for('pink') }}" class="tlacitko-mode-svetle btn">Růžový</a>
         {% endif %}
