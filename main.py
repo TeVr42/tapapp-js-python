@@ -20,7 +20,15 @@ PINK = [
     ["k2.png", "k3.png", "k5.png", "k9.png", "k10.png", "k18.png"],
     "k21.png"
     ]
-color_mode = LIGHT
+
+
+def get_colormode(color):
+    if color == LIGHT[0]:
+        return LIGHT
+    elif color == PINK[0]:
+        return PINK
+    else:
+        return DARK
 
 
 def is_game_on(game):
@@ -33,48 +41,34 @@ def is_game_on(game):
 
 @app.route('/')
 def home():
-    return render_template("index.html", mode=color_mode[0])
+    return render_template("index.html", mode=DARK[0])
+
+@app.route('/<color>')
+def colored(color):
+    return render_template("index.html", mode=color)
 
 
-@app.route('/dark')
-def dark():
-    global color_mode
-    color_mode = DARK
-    return redirect(url_for("home"))
+@app.route('/postreh/<color>/<int:game>/<int:speed>')
+def hra1(color, game, speed):
+    colormode = get_colormode(color)
+    return render_template("game1.html", game=is_game_on(game), speed=speed, mode=colormode[0], kruhy=colormode[1])
 
 
-@app.route('/light')
-def light():
-    global color_mode
-    color_mode = LIGHT
-    return redirect(url_for("home"))
+@app.route('/presnost/<color>/<int:game>/<int:speed>')
+def hra2(color, game, speed):
+    colormode = get_colormode(color)
+    return render_template("game2.html", game=is_game_on(game), speed=speed, mode=colormode[0], kruhy=colormode[2])
 
 
-@app.route('/pink')
-def pink():
-    global color_mode
-    color_mode = PINK
-    return redirect(url_for("home"))
+@app.route('/rychlost/<color>/<int:game>')
+def hra3(color, game):
+    colormode = get_colormode(color)
+    return render_template("game3.html", game=is_game_on(game), mode=colormode[0], kruhy=colormode[3])
 
 
-@app.route('/postreh/<int:game>/<int:speed>')
-def hra1(game, speed):
-    return render_template("game1.html", game=is_game_on(game), speed=speed, mode=color_mode[0], kruhy=color_mode[1])
-
-
-@app.route('/presnost/<int:game>/<int:speed>')
-def hra2(game, speed):
-    return render_template("game2.html", game=is_game_on(game), speed=speed, mode=color_mode[0], kruhy=color_mode[2])
-
-
-@app.route('/rychlost/<int:game>')
-def hra3(game):
-    return render_template("game3.html", game=is_game_on(game), mode=color_mode[0], kruhy=color_mode[3])
-
-
-@app.route('/info')
-def info():
-    return render_template("info.html", mode=color_mode[0])
+@app.route('/info/<color>')
+def info(color):
+    return render_template("info.html", mode=get_colormode(color)[0])
 
 
 if __name__ == "__main__":

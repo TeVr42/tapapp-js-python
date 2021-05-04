@@ -1,0 +1,15 @@
+    <div class="btn-group" style="margin-top: 20px">
+        {% if mode == "dark": %}
+      <a href="{{ url_for('colored', color='light') }}" class="tlacitko-mode-tmave btn" aria-current="page">Světlý</a>
+      <a href="{{ url_for('colored', color='dark') }}" class="tlacitko-mode-svetle btn">Tmavý</a>
+        <a href="{{ url_for('colored', color='pink') }}" class="tlacitko-mode-tmave btn">Růžový</a>
+        {% elif mode == "light": %}
+      <a href="{{ url_for('colored', color='light') }}" class="tlacitko-mode-svetle btn" aria-current="page">Světlý</a>
+      <a href="{{ url_for('colored', color='dark') }}" class="tlacitko-mode-tmave btn">Tmavý</a>
+      <a href="{{ url_for('colored', color='pink') }}" class="tlacitko-mode-tmave btn">Růžový</a>
+        {% else: %}
+      <a href="{{ url_for('colored', color='light') }}" class="tlacitko-mode-tmave btn" aria-current="page">Světlý</a>
+      <a href="{{ url_for('colored', color='dark') }}" class="tlacitko-mode-tmave btn">Tmavý</a>
+      <a href="{{ url_for('colored', color='pink') }}" class="tlacitko-mode-svetle btn">Růžový</a>
+        {% endif %}
+    </div>
