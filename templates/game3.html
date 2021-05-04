@@ -1,4 +1,14 @@
 {% include "header.html" %}
+
+{% if mode == "light": %}
+    <link href="{{ url_for('static', filename='light.css') }}" rel="stylesheet" type="text/css" />
+{% elif mode == "dark": %}
+    <link href="{{ url_for('static', filename='dark.css') }}" rel="stylesheet" type="text/css" />
+{% else: %}
+    <link href="{{ url_for('static', filename='pink.css') }}" rel="stylesheet" type="text/css" />
+{% endif %}
+</head>
+
 {% if not game: %}
 <body>
 	<h1 class="title-margin"> Nachystat</h1>
@@ -11,7 +21,7 @@
     <h1 id="hlavniNapis" class="title-margin" style="visibility: hidden"> Moc brzo!</h1>
 	<button id="tlacitkoZnovu" class="tlacitko btn btn-outline-dark btn-lg" onclick="HratZnovu()" style="visibility: hidden">Hrát znovu ⏱</button>
     <a href="{{ url_for('home')}}" id="anchorDomu" style="visibility: hidden"><button id="tlacitkoDomu" class="tlacitko btn btn-dark btn-lg" style="visibility: hidden">Domů 🏠 </button></a>
-    <img id="tlacitkoKruh" class="kruh-tlacitko" src="{{ url_for('static', filename='images/k10.png') }}" style="visibility: hidden" onclick="SpravneKliknuti()">
+    <img id="tlacitkoKruh" class="kruh-tlacitko" src="/static/images/{{ kruhy }}" style="visibility: hidden" onclick="SpravneKliknuti()">
 
     <script src="{{ url_for('static', filename='script3.js') }}"></script>
 </body>

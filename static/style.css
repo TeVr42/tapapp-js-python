@@ -66,6 +66,7 @@ h3 {
 h1 {
     font-size: 3.5rem;
 }
+
 .info-text {
     margin: 0 15%;
     width: 70%;  
@@ -73,7 +74,7 @@ h1 {
 .kruh {
     width: 15%;
 }
-.btn {
+.tlacitko {
     width: 70%;
     margin: 5px 15%;
 }

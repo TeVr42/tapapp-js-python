@@ -1,5 +1,14 @@
 {% include "header.html" %}
 
+{% if mode == "light": %}
+    <link href="{{ url_for('static', filename='light.css') }}" rel="stylesheet" type="text/css" />
+{% elif mode == "dark": %}
+    <link href="{{ url_for('static', filename='dark.css') }}" rel="stylesheet" type="text/css" />
+{% else: %}
+    <link href="{{ url_for('static', filename='pink.css') }}" rel="stylesheet" type="text/css" />
+{% endif %}
+</head>
+
 <body>
 
 	<h1 class="title-margin"> Jakou hru? </h1>
@@ -8,12 +17,14 @@
     <a href="{{ url_for('hra3', game=0) }}"><button class="tlacitko btn btn-outline-dark btn-lg">Rychlost ⏱</button></a>
     <a href="{{ url_for('info') }}"><button class="tlacitko btn btn-dark btn-lg">Jak hrát ❔ </button></a>
     <div class="btn-group" style="margin-top: 20px">
-        {% if bg_color == "#4c586f": %}
-      <a href="{{ url_for('light') }}" class="tlacitko-mode-tmave btn" aria-current="page">Light</a>
-      <a href="{{ url_for('dark') }}" class="tlacitko-mode-svetle btn">Dark</a>
+        {% if mode == "dark": %}
+      <a href="{{ url_for('light') }}" class="tlacitko-mode-tmave btn" aria-current="page">Světlý</a>
+      <a href="{{ url_for('dark') }}" class="tlacitko-mode-svetle btn">Tmavý</a>
+        <a href="{{ url_for('pink') }}" class="tlacitko-mode-tmave btn">Růžový</a>
         {% else: %}
-      <a href="{{ url_for('light') }}" class="tlacitko-mode-svetle btn" aria-current="page">Light</a>
-      <a href="{{ url_for('dark') }}" class="tlacitko-mode-tmave btn">Dark</a>
+      <a href="{{ url_for('light') }}" class="tlacitko-mode-svetle btn" aria-current="page">Světlý</a>
+      <a href="{{ url_for('dark') }}" class="tlacitko-mode-tmave btn">Tmavý</a>
+      <a href="{{ url_for('pink') }}" class="tlacitko-mode-svetle btn">Růžový</a>
         {% endif %}
     </div>
 

@@ -1,0 +1,19 @@
+body {
+    color: #cbc5c1;
+    background-color: #4c586f;
+}
+
+.tlacitko, .tlacitko-mode-svetle {
+    color: #cbc5c1;
+    border-color: #cbc5c1;
+}
+
+.btn-dark, .tlacitko-mode-tmave {
+    background-color: #cbc5c1;
+    color: #4c586f;
+}
+.btn:hover {
+    color: #4c586f;
+    background-color: #cbc5c1;
+    border-color: #cbc5c1;
+}

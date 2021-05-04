@@ -1,4 +1,4 @@
-var zdrojeObrazku = ["k1.png", "k3.png", "k5.png", "k7.png", "k8.png", "k10.png"]
+var zdrojeObrazku;
 
 var documentSirka;
 var documentVyska;
@@ -24,7 +24,8 @@ var tlacitkoDomu = document.getElementById("tlacitkoDomu");
 var anchorDomu = document.getElementById("anchorDomu");
 var napisProcenta = document.getElementById("procentaNapis");
 
-function Hrat(rychlost) {
+function Hra(rychlost, zdroje) {
+    zdrojeObrazku = zdroje;
     var index = Math.floor(Math.random() * zdrojeObrazku.length);
     var zdroj = zdrojeObrazku[index];
     rychlostVymazani = rychlost;

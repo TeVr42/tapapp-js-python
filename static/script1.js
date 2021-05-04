@@ -1,4 +1,4 @@
-var srcImages = ["k1.png", "k2.png","k3.png", "k4.png", "k5.png", "k6.png","k7.png", "k8.png", "k9.png", "k10.png"]
+var srcImages;
 
 var documentDelka;
 var documentVyska;
@@ -18,6 +18,11 @@ var tlacitkoZnovu = document.getElementById("tlacitkoZnovu");
 var napis = document.getElementById("hlavniNapis");
 var tlacitkoDomu = document.getElementById("tlacitkoDomu");
 var anchorDomu = document.getElementById("anchorDomu");
+
+function Hra(rychlost, zdroje) {
+    srcImages = zdroje;
+    setInterval(VytvorKruh, rychlost);
+}
 
 function VytvorKruh() {
     documentDelka = document.documentElement.clientWidth;

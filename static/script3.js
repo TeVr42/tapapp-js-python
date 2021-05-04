@@ -4,6 +4,8 @@ var napis = document.getElementById("hlavniNapis");
 var tlacitkoDomu = document.getElementById("tlacitkoDomu");
 var anchorDomu = document.getElementById("anchorDomu");
 
+var malaObrazovka = window.matchMedia("(max-width: 600px)");
+
 var start;
 var hraBezi = true;
 
@@ -23,7 +25,11 @@ function SpravneKliknuti() {
     KlikutiKonec();
     var prodleva = (Date.now() - start) + " milisekund";
     napis.textContent = prodleva;
-    napis.style.fontSize = "3rem";
+    if (malaObrazovka.matches) {
+    napis.style.fontSize = "2.6rem";
+    } else {
+    napis.style.fontSize = "3.2rem";
+    }
 }
 
 

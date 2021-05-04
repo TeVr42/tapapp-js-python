@@ -1,18 +1,27 @@
 {% include "header.html" %}
 
+{% if mode == "light": %}
+    <link href="{{ url_for('static', filename='light.css') }}" rel="stylesheet" type="text/css" />
+{% elif mode == "dark": %}
+    <link href="{{ url_for('static', filename='dark.css') }}" rel="stylesheet" type="text/css" />
+{% else: %}
+    <link href="{{ url_for('static', filename='pink.css') }}" rel="stylesheet" type="text/css" />
+{% endif %}
+</head>
+
 {% if not game: %}
 <body>
 
     <h1 class="title-margin"> Jak rychle?</h1>
-    <a href="{{ url_for('hra2', game=1, speed=1600) }}"><button id="tHrat1" class="tlacitko btn btn-outline-dark btn-lg">Pomalu 🐨</button></a>
-    <a href="{{ url_for('hra2', game=1, speed=1200) }}"><button id="tHrat2" class="tlacitko btn btn-outline-dark btn-lg">Středně 🦝</button></a>
+    <a href="{{ url_for('hra2', game=1, speed=2000) }}"><button id="tHrat1" class="tlacitko btn btn-outline-dark btn-lg">Pomalu 🐨</button></a>
+    <a href="{{ url_for('hra2', game=1, speed=1400) }}"><button id="tHrat2" class="tlacitko btn btn-outline-dark btn-lg">Středně 🦝</button></a>
     <a href="{{ url_for('hra2', game=1, speed=800) }}"><button id="tHrat3" class="tlacitko btn btn-outline-dark btn-lg">Rychle 🐼</button></a>
 
     <a href="{{ url_for('home')}}"><button class="tlacitko btn btn-dark btn-lg">Domů 🏠</button></a>
 
 </body>
 {% else: %}
-<body onload="Hrat( {{ speed }})">
+<body onload="Hra( {{ speed }}, {{ kruhy }})">
     <h2 id="casovacNapis" style="visibility: hidden"> 00:00 </h2>
     <h2 id="hlavniNapis">Tvůj kruh:</h2>
     <h3 id="procentaNapis" style="visibility: hidden"> 30 %</h3>
