@@ -11,7 +11,7 @@ LIGHT = [
 DARK = [
     "dark",
     ["k1.png", "k6.png", "k7.png", "k8.png", "k11.png", "k12.png", "k13.png", "k14.png", "k15.png", "k20.png"],
-    ["k6.png", "k11.png", "k13.png", "k14.png"],
+    ["k6.png", "k11.png", "k13.png"],
     "k12.png"
     ]
 PINK = [
@@ -43,30 +43,31 @@ def is_game_on(game):
 def home():
     return render_template("index.html", mode=DARK[0])
 
+
 @app.route('/<color>')
 def colored(color):
     return render_template("index.html", mode=color)
 
 
-@app.route('/postreh/<color>/<int:game>/<int:speed>')
+@app.route('/<color>/postreh/<int:game>/<int:speed>')
 def hra1(color, game, speed):
     colormode = get_colormode(color)
     return render_template("game1.html", game=is_game_on(game), speed=speed, mode=colormode[0], kruhy=colormode[1])
 
 
-@app.route('/presnost/<color>/<int:game>/<int:speed>')
+@app.route('/<color>/presnost/<int:game>/<int:speed>')
 def hra2(color, game, speed):
     colormode = get_colormode(color)
     return render_template("game2.html", game=is_game_on(game), speed=speed, mode=colormode[0], kruhy=colormode[2])
 
 
-@app.route('/rychlost/<color>/<int:game>')
+@app.route('/<color>/rychlost/<int:game>')
 def hra3(color, game):
     colormode = get_colormode(color)
     return render_template("game3.html", game=is_game_on(game), mode=colormode[0], kruhy=colormode[3])
 
 
-@app.route('/info/<color>')
+@app.route('/<color>/info')
 def info(color):
     return render_template("info.html", mode=get_colormode(color)[0])
 
