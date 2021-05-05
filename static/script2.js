@@ -121,8 +121,12 @@ function KonecHry() {
     var kruhy = document.getElementsByClassName("kruh");
     Schovat(kruhy);
     velkyKruh.remove();
-    hlavniNapis.style.fontSize = "5rem";
     Zviditelnit([tlacitkoZnovu, tlacitkoDomu, anchorDomu]);
+    if (malaObrazovka.matches) {
+    hlavniNapis.style.fontSize = "3.5rem";
+    } else {
+    hlavniNapis.style.fontSize = "5rem";
+    }
 }
 
 function PocitadloCasu() {
