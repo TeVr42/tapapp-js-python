@@ -1,14 +1,14 @@
     <div class="btn-group" style="margin-top: 20px">
         {% if mode == "dark": %}
-      <a href="{{ url_for('colored', color='light') }}" class="{{ settings['mode_dark_btn'] }}" aria-current="page">Světlý</a>
+      <a href="{{ url_for('colored', color='light') }}" class="{{ settings['mode_dark_btn'] }}">Světlý</a>
       <a href="{{ url_for('colored', color='dark') }}" class="{{ settings['mode_light_btn'] }}">Tmavý</a>
         <a href="{{ url_for('colored', color='pink') }}" class="{{ settings['mode_dark_btn'] }}">Růžový</a>
         {% elif mode == "light": %}
-      <a href="{{ url_for('colored', color='light') }}" class="{{ settings['mode_light_btn'] }}" aria-current="page">Světlý</a>
+      <a href="{{ url_for('colored', color='light') }}" class="{{ settings['mode_light_btn'] }}">Světlý</a>
       <a href="{{ url_for('colored', color='dark') }}" class="{{ settings['mode_dark_btn'] }}">Tmavý</a>
       <a href="{{ url_for('colored', color='pink') }}" class="{{ settings['mode_dark_btn'] }}">Růžový</a>
         {% else: %}
-      <a href="{{ url_for('colored', color='light') }}" class="{{ settings['mode_dark_btn'] }}" aria-current="page">Světlý</a>
+      <a href="{{ url_for('colored', color='light') }}" class="{{ settings['mode_dark_btn'] }}">Světlý</a>
       <a href="{{ url_for('colored', color='dark') }}" class="{{ settings['mode_dark_btn'] }}">Tmavý</a>
       <a href="{{ url_for('colored', color='pink') }}" class="{{ settings['mode_light_btn'] }}">Růžový</a>
         {% endif %}
