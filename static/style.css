@@ -35,6 +35,10 @@ h3 {
     border-width: 2px;
 }
 
+.tlacitko-mode-tmave {
+    border-width: 0;
+}
+
 .kruh {
     width: 5%;
     position: absolute;

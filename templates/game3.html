@@ -12,15 +12,15 @@
 {% if not game: %}
 <body>
 	<h1 class="title-margin"> Připravit </h1>
-    <a href="{{ url_for('hra3', color=mode, game=1) }}"><button class="tlacitko btn btn-outline-dark btn-lg">Start 🏁</button></a>
-    <a href="{{ url_for('colored', color=mode)}}"><button class="tlacitko btn btn-dark btn-lg">Domů 🏠 </button></a>
+    <a href="{{ url_for('hra3', color=mode, game=1) }}"><button class="tlacitko btn btn-outline-light btn-lg">Start 🏁</button></a>
+    <a href="{{ url_for('colored', color=mode)}}"><button class="tlacitko btn btn-light btn-lg">Domů 🏠 </button></a>
 
   </body>
 {% else: %}
 <body onload="Hrat()" onclick="KlikutiKonec()">
     <h1 id="hlavniNapis" class="title-margin" style="visibility: hidden"> Moc brzo!</h1>
-	<button id="tlacitkoZnovu" class="tlacitko btn btn-outline-dark btn-lg" onclick="HratZnovu()" style="visibility: hidden">Hrát znovu ⏱</button>
-    <a href="{{ url_for('colored', color=mode)}}" id="anchorDomu" style="visibility: hidden"><button id="tlacitkoDomu" class="tlacitko btn btn-dark btn-lg" style="visibility: hidden">Domů 🏠 </button></a>
+	<button id="tlacitkoZnovu" class="tlacitko btn btn-outline-light btn-lg" onclick="HratZnovu()" style="visibility: hidden">Hrát znovu ⏱</button>
+    <a href="{{ url_for('colored', color=mode)}}" id="anchorDomu" style="visibility: hidden"><button id="tlacitkoDomu" class="tlacitko btn btn-light btn-lg" style="visibility: hidden">Domů 🏠 </button></a>
     <img id="tlacitkoKruh" class="kruh-tlacitko" src="/static/images/{{ kruhy }}" style="visibility: hidden" onclick="SpravneKliknuti()">
 
     <script src="{{ url_for('static', filename='script3.js') }}"></script>
