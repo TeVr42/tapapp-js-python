@@ -1,6 +1,5 @@
 body {
     text-align: center;
-    text-align: center;
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -24,18 +23,18 @@ h3 {
     width: 40%;
 }
 
-.tlacitko {
+.simple-button {
     letter-spacing: 2px;
     width: 30%;
     margin: 5px 35%;
     border-width: 2px;
 }
 
-.tlacitko-mode-svetle {
+.mode-btn-light {
     border-width: 2px;
 }
 
-.tlacitko-mode-tmave {
+.mode-btn-dark {
     border-width: 0;
 }
 
@@ -82,7 +81,7 @@ h1 {
 .kruh {
     width: 15%;
 }
-.tlacitko, .wide-button {
+.simple-button, .wide-button {
     width: 70%;
     margin: 5px 15%;
 }

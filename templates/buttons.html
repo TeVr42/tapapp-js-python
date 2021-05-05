@@ -1,15 +1,15 @@
     <div class="btn-group" style="margin-top: 20px">
         {% if mode == "dark": %}
-      <a href="{{ url_for('colored', color='light') }}" class="tlacitko-mode-tmave btn btn-light" aria-current="page">Světlý</a>
-      <a href="{{ url_for('colored', color='dark') }}" class="tlacitko-mode-svetle btn btn-outline-light">Tmavý</a>
-        <a href="{{ url_for('colored', color='pink') }}" class="tlacitko-mode-tmave btn btn-light">Růžový</a>
+      <a href="{{ url_for('colored', color='light') }}" class="{{ settings['mode_dark_btn'] }}" aria-current="page">Světlý</a>
+      <a href="{{ url_for('colored', color='dark') }}" class="{{ settings['mode_light_btn'] }}">Tmavý</a>
+        <a href="{{ url_for('colored', color='pink') }}" class="{{ settings['mode_dark_btn'] }}">Růžový</a>
         {% elif mode == "light": %}
-      <a href="{{ url_for('colored', color='light') }}" class="tlacitko-mode-svetle btn btn-outline-light" aria-current="page">Světlý</a>
-      <a href="{{ url_for('colored', color='dark') }}" class="tlacitko-mode-tmave btn btn btn-light">Tmavý</a>
-      <a href="{{ url_for('colored', color='pink') }}" class="tlacitko-mode-tmave btn btn btn-light">Růžový</a>
+      <a href="{{ url_for('colored', color='light') }}" class="{{ settings['mode_light_btn'] }}" aria-current="page">Světlý</a>
+      <a href="{{ url_for('colored', color='dark') }}" class="{{ settings['mode_dark_btn'] }}">Tmavý</a>
+      <a href="{{ url_for('colored', color='pink') }}" class="{{ settings['mode_dark_btn'] }}">Růžový</a>
         {% else: %}
-      <a href="{{ url_for('colored', color='light') }}" class="tlacitko-mode-tmave btn btn btn-light" aria-current="page">Světlý</a>
-      <a href="{{ url_for('colored', color='dark') }}" class="tlacitko-mode-tmave btn btn btn-light">Tmavý</a>
-      <a href="{{ url_for('colored', color='pink') }}" class="tlacitko-mode-svetle btn btn-outline-light">Růžový</a>
+      <a href="{{ url_for('colored', color='light') }}" class="{{ settings['mode_dark_btn'] }}" aria-current="page">Světlý</a>
+      <a href="{{ url_for('colored', color='dark') }}" class="{{ settings['mode_dark_btn'] }}">Tmavý</a>
+      <a href="{{ url_for('colored', color='pink') }}" class="{{ settings['mode_light_btn'] }}">Růžový</a>
         {% endif %}
     </div>

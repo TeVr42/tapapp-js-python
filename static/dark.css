@@ -3,12 +3,12 @@ body {
     background-color: #4c586f;
 }
 
-.tlacitko, .tlacitko-mode-svetle {
+.simple-button, .mode-btn-light {
     color: #cbc5c1;
     border-color: #cbc5c1;
 }
 
-.btn-light, .tlacitko-mode-tmave {
+.btn-light, .mode-btn-dark {
     background-color: #cbc5c1;
     color: #4c586f;
 }
