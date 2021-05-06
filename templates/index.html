@@ -7,7 +7,24 @@
     <a href="{{ url_for('hra2', color=mode, game=0, speed=0) }}"><button class="{{ settings['light_btn'] }}">Přesnost 🎯</button></a>
     <a href="{{ url_for('hra3', color=mode, game=0) }}"><button class="{{ settings['light_btn'] }}">Rychlost ⏱</button></a>
     <a href="{{ url_for('info', color=mode) }}"><button class="{{ settings['dark_btn'] }}">Jak hrát ❔ </button></a>
-{% include "buttons.html" %}
+
+    <div class="btn-group" style="margin-top: 20px">
+        {% if mode == "light": %}
+      <a href="{{ url_for('colored', color='light') }}" class="{{ settings['mode_light_btn'] }}">Světlý</a>
+        {% else: %}
+      <a href="{{ url_for('colored', color='light') }}" class="{{ settings['mode_dark_btn'] }}">Světlý</a>
+        {% endif %}
+        {% if mode == "dark": %}
+        <a href="{{ url_for('colored', color='dark') }}" class="{{ settings['mode_light_btn'] }}">Tmavý</a>
+        {% else: %}
+      <a href="{{ url_for('colored', color='dark') }}" class="{{ settings['mode_dark_btn'] }}">Tmavý</a>
+        {% endif %}
+        {% if mode == "pink": %}
+      <a href="{{ url_for('colored', color='pink') }}" class="{{ settings['mode_light_btn'] }}">Růžový</a>
+        {% else: %}
+      <a href="{{ url_for('colored', color='pink') }}" class="{{ settings['mode_dark_btn'] }}">Růžový</a>
+        {% endif %}
+    </div>
 
   </body>
 </html>
