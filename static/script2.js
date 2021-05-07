@@ -1,174 +1,165 @@
-var zdrojeObrazku;
+var srcImages;
 
-var documentSirka;
-var documentVyska;
-var malaObrazovka = window.matchMedia("(max-width: 600px)");
+var documentWidth;
+var documentHeight;
+var smallScreen = window.matchMedia("(max-width: 600px)");
 
-var kruhX;
-var kruhY;
+var circleX;
+var circleY;
 
-var skore = 6;
-var hraBezi = true;
+var score = 6;
+var gameIsOn = true;
 var i = 0;
-var vteriny = 0;
-var minuty = 0;
-var rychlostVymazani;
+var seconds = 0;
+var minutes = 0;
+var removingSpeed;
 
-var velkyKruh = document.getElementById("velkyKruh");
-var hlavniBarva;
+var bigCircle = document.getElementById("bigCircle");
+var mainColor;
 
-var tlacitkoZnovu = document.getElementById("tlacitkoZnovu");
-var napis = document.getElementById("hlavniNapis");
-var casNapis = document.getElementById("casovacNapis");
-var tlacitkoDomu = document.getElementById("tlacitkoDomu");
-var anchorDomu = document.getElementById("anchorDomu");
-var napisProcenta = document.getElementById("procentaNapis");
+var buttonReplay = document.getElementById("buttonReplay");
+var mainTitle = document.getElementById("mainTitle");
+var timerText = document.getElementById("timerText");
+var buttonHome = document.getElementById("buttonHome");
+var anchorHome = document.getElementById("anchorHome");
+var percentageText = document.getElementById("percentageText");
 
-function Hra(rychlost, zdroje) {
-    zdrojeObrazku = zdroje;
-    var index = Math.floor(Math.random() * zdrojeObrazku.length);
-    var zdroj = zdrojeObrazku[index];
-    rychlostVymazani = rychlost;
-    hlavniBarva = "/static/images/" + zdroj;
-    velkyKruh.setAttribute("src", hlavniBarva);
-    zdrojeObrazku.splice(index, 1);
+function Game(speed, colorSources) {
+    srcImages = colorSources;
+    var index = Math.floor(Math.random() * srcImages.length);
+    var source = srcImages[index];
+    removingSpeed = speed;
+    mainColor = "/static/images/" + source;
+    bigCircle.setAttribute("src", mainColor);
+    srcImages.splice(index, 1);
 
-    tlacitkoZnovu.style.position = "static";
-    Schovat([tlacitkoDomu, anchorDomu]);
-    Zviditelnit([velkyKruh, casNapis, napisProcenta]);
-    setInterval(GenerujKruhy, 200);
-    setInterval(PocitadloCasu, 1000)
+    buttonReplay.style.position = "static";
+    HideElements([buttonHome, anchorHome]);
+    ShowElements([bigCircle, timerText, percentageText]);
+    setInterval(GenerateCircles, 200);
+    setInterval(TimeCounter, 1000)
 }
 
-function GenerujKruhy() {
-    var nahodnaAkce = Math.floor(Math.random() * 2);
-    if (nahodnaAkce == 0) {
-        VytvorCiziKruh();
+function GenerateCircles() {
+    if (gameIsOn) {
+    var randomAction = Math.floor(Math.random() * 2);
+    if (randomAction == 0) {
+        var index = Math.floor(Math.random() * srcImages.length);
+        var source = srcImages[index];
+        var circleColor = "/static/images/" + source;
+        MakeCircle(circleColor, "OnCircleClick(event, -5)");
     } else {
-        VytvorVlastniKruh();
+        MakeCircle(mainColor, "OnCircleClick(event, 2)");
+    }
     }
 }
 
-function VytvorCiziKruh() {
-    if (hraBezi) {
-    var index = Math.floor(Math.random() * zdrojeObrazku.length);
-    var zdroj = zdrojeObrazku[index];
-    var barva = "/static/images/" + zdroj;
-    VytvorKruh(barva, "KlinutiNaKruh(event, -5)");
-}
-}
 
-function VytvorVlastniKruh() {
-    if (hraBezi) {
-    VytvorKruh(hlavniBarva, "KlinutiNaKruh(event, 1)");
-}
-}
+function MakeCircle(circleColor, akce) {
+    documentWidth = document.documentElement.clientWidth;
+    documentHeight = document.documentElement.clientHeight;
 
-function VytvorKruh(barva, akce) {
-    documentSirka = document.documentElement.clientWidth;
-    documentVyska = document.documentElement.clientHeight;
+    newCircle = document.createElement("img");
+    newCircle.setAttribute("src", circleColor);
+    newCircle.setAttribute("id", "Circle" + i);
+    newCircle.setAttribute("class", "circle");
+    newCircle.setAttribute("onclick", akce);
+    document.body.appendChild(newCircle);
+    DeleteCircle(newCircle);
 
-    kruh = document.createElement("img");
-    kruh.setAttribute("src", barva);
-    kruh.setAttribute("id", "Kruh" + i);
-    kruh.setAttribute("class", "kruh");
-    kruh.setAttribute("onclick", akce);
-    document.body.appendChild(kruh);
-    VymazatKruh(kruh);
-
-    if (malaObrazovka.matches) {
-    kruhX = Math.floor(Math.random() * 6) * documentSirka*0.16 + documentSirka*0.02;
-    kruhY = documentVyska*0.55;
+    if (smallScreen.matches) {
+    circleX = Math.floor(Math.random() * 6) * documentWidth*0.16 + documentWidth*0.02;
+    circleY = documentHeight*0.55;
     } else {
-    kruhX = Math.floor(Math.random() * 6) * documentSirka*0.10 + documentSirka*0.22;
-    kruhY = documentVyska*0.75;
+    circleX = Math.floor(Math.random() * 6) * documentWidth*0.10 + documentWidth*0.22;
+    circleY = documentHeight*0.75;
     }
 
-    kruh.style.left = kruhX + "px";
-    kruh.style.top = kruhY + "px";
+    newCircle.style.left = circleX + "px";
+    newCircle.style.top = circleY + "px";
 
     i++;
 }
 
-function VymazatKruh(kruhKVymazani) {
-    setTimeout(function(){ kruhKVymazani.remove(); }, rychlostVymazani);
+function DeleteCircle(circleToDelete) {
+    setTimeout(function(){ circleToDelete.remove(); }, removingSpeed);
 }
 
-function KlinutiNaKruh(event, skoreUprava) {
-    skore = skore + skoreUprava;
+function OnCircleClick(event, changeOfScore) {
+    score = score + changeOfScore;
     document.getElementById(event.target.id).remove();
-    if (malaObrazovka.matches) { 
-    velkyKruh.style.width = 2 * skore + "%";
+    if (smallScreen.matches) {
+    bigCircle.style.width = 2 * score + "%";
     } else {
-    velkyKruh.style.width = skore + "%";
+    bigCircle.style.width = score + "%";
     }
-    napisProcenta.textContent = skore * 5 + "%";
-    if (skore >= 20) {
-        KonecHry();
-        napis.textContent = "Výhra!";
-        napisProcenta.textContent = "100 %";
+    percentageText.textContent = score * 5 + "%";
+    if (score >= 20) {
+        GameOver();
+        mainTitle.textContent = "Výhra!";
+        percentageText.textContent = "100 %";
     }
-    if (skore <= 0) {
-        KonecHry();
-        napis.textContent = "Prohra!";
-        napisProcenta.textContent = "0 %";
+    if (score <= 0) {
+        GameOver();
+        mainTitle.textContent = "Prohra!";
+        percentageText.textContent = "0 %";
     }
 }
 
-function KonecHry() {
-    hraBezi = false;
-    napis.style.visibility = "visible";
-    var kruhy = document.getElementsByClassName("kruh");
-    Schovat(kruhy);
-    velkyKruh.remove();
-    Zviditelnit([tlacitkoZnovu, tlacitkoDomu, anchorDomu]);
-    if (malaObrazovka.matches) {
-    hlavniNapis.style.fontSize = "3.5rem";
+function GameOver() {
+    gameIsOn = false;
+    mainTitle.style.visibility = "visible";
+    var circles = document.getElementsByClassName("circle");
+    HideElements(circles);
+    bigCircle.remove();
+    ShowElements([buttonReplay, buttonHome, anchorHome]);
+    if (smallScreen.matches) {
+    mainTitle.style.fontSize = "3.5rem";
     } else {
-    hlavniNapis.style.fontSize = "5rem";
+    mainTitle.style.fontSize = "5rem";
     }
 }
 
-function PocitadloCasu() {
-    if (hraBezi){    
-    vteriny ++;
+function TimeCounter() {
+    if (gameIsOn){
+    seconds ++;
 
-    if (vteriny == 60) {
-    vteriny = vteriny - 60;
-    minuty ++;
+    if (seconds == 60) {
+    seconds = seconds - 60;
+    minutes ++;
     }
-    if (minuty == 60) {
-    hraBezi = false;
+    if (minutes == 60) {
+    gameIsOn = false;
     }
 
-    var napisVeteriny;
-    var napisMinuty;
-    if (vteriny < 10) {
-        napisVeteriny = "0" + vteriny;
+    var textSeconds;
+    var textMinutes;
+    if (seconds < 10) {
+        textSeconds = "0" + seconds;
     } else {
-        napisVeteriny = vteriny;
+        textSeconds = seconds;
     }
-    if (minuty < 10) {
-        napisMinuty = "0" + minuty;
+    if (minutes < 10) {
+        textMinutes = "0" + minutes;
     } else {
-        napisMinuty = minuty;
+        textMinutes = minutes;
     }
-    casNapis.textContent = napisMinuty + ":" + napisVeteriny;
+    timerText.textContent = textMinutes + ":" + textSeconds;
     }
 }
 
-function Schovat(elements) {
+function HideElements(elements) {
     for (i = 0; i < elements.length; i++) {
     elements[i].style.visibility = "hidden";
     }
 }
 
-function Zviditelnit(elements) {
+function ShowElements(elements) {
     for (i = 0; i < elements.length; i++) {
     elements[i].style.visibility = "visible";
     }
 }
 
-function HratZnovu() {
+function Replay() {
     location.reload();
 }

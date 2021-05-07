@@ -38,16 +38,16 @@ h3 {
     border-width: 0;
 }
 
-.kruh {
+.circle {
     width: 5%;
     position: absolute;
 }
 
-.velky-kruh {
+.big-circle {
     width: 6%;
 }
 
-.kruh-tlacitko {
+.circle-button {
     position: absolute;
     left: 35%;
     top: 20%;
@@ -78,14 +78,14 @@ h1 {
     margin: 0 15%;
     width: 70%;  
 }
-.kruh {
+.circle {
     width: 15%;
 }
 .simple-button, .wide-button {
     width: 70%;
     margin: 5px 15%;
 }
-.velky-kruh {
+.big-circle {
     width: 12%;
 }
 }

@@ -1,86 +1,86 @@
 var srcImages;
 
-var documentDelka;
-var documentVyska;
-var malaObrazovka = window.matchMedia("(max-width: 600px)");
+var documentWidth;
+var documentHeight;
+var smallScreen = window.matchMedia("(max-width: 600px)");
 
-var delkaX;
-var kruhX;
-var kruhY;
+var circleWidth;
+var circleX;
+var circleY;
 
-var skore = 0;
-var hraBezi = true;
+var score = 0;
+var gameIsOn = true;
 var i = 0;
 
-var skoreNapis = document.getElementById("skoreNapis");
-var tlacitkoZnovu = document.getElementById("tlacitkoZnovu");
+var scoreTitle = document.getElementById("scoreTitle");
+var buttonReplay = document.getElementById("buttonReplay");
 
-var napis = document.getElementById("hlavniNapis");
-var tlacitkoDomu = document.getElementById("tlacitkoDomu");
-var anchorDomu = document.getElementById("anchorDomu");
+var mainTitle = document.getElementById("mainTitle");
+var buttonHome = document.getElementById("buttonHome");
+var anchorHome = document.getElementById("anchorHome");
 
-function Hra(rychlost, zdroje) {
-    srcImages = zdroje;
-    setInterval(VytvorKruh, rychlost);
+function Game(speed, sourceColors) {
+    srcImages = sourceColors;
+    setInterval(NewCircle, speed);
 }
 
-function VytvorKruh() {
-    documentDelka = document.documentElement.clientWidth;
-    documentVyska = document.documentElement.clientHeight;
+function NewCircle() {
+    documentWidth = document.documentElement.clientWidth;
+    documentHeight = document.documentElement.clientHeight;
 
-    if (malaObrazovka.matches) {
-    delkaX = documentDelka * 0.15;
+    if (smallScreen.matches) {
+    circleWidth = documentWidth * 0.15;
     } else {
-    delkaX = documentDelka * 0.05;
+    circleWidth = documentWidth * 0.05;
     }
 
-    if (hraBezi) {
-    var kruh = document.createElement("img");
+    if (gameIsOn) {
+    var circleNew = document.createElement("img");
     var index = Math.floor(Math.random() * srcImages.length);
     var source = srcImages[index];
 
-    kruh.setAttribute("src", "/static/images/" + source);
-    kruh.setAttribute("id", "Kruh" + i);
-    kruh.setAttribute("class", "kruh");
-    kruh.setAttribute("onclick", "PriKliknuti(event)");
-    document.body.appendChild(kruh);
+    circleNew.setAttribute("src", "/static/images/" + source);
+    circleNew.setAttribute("id", "Circle" + i);
+    circleNew.setAttribute("class", "circle");
+    circleNew.setAttribute("onclick", "OnClick(event)");
+    document.body.appendChild(circleNew);
 
-    kruhX = Math.floor(Math.random() *(documentDelka - delkaX));
-    kruhY = Math.floor(Math.random() * (documentVyska - delkaX));
+    circleX = Math.floor(Math.random() *(documentWidth - circleWidth));
+    circleY = Math.floor(Math.random() * (documentHeight - circleWidth));
 
-    kruh.style.left = kruhX + "px";
-    kruh.style.top = kruhY + "px";
+    circleNew.style.left = circleX + "px";
+    circleNew.style.top = circleY + "px";
 
     i++;
 }
 }
 
-function PriKliknuti(event) {
+function OnClick(event) {
     document.getElementById(event.target.id).remove();
 
-    skore ++;
-    if (skore < 10) {
-    skoreNapis.textContent = "0" + skore;
+    score ++;
+    if (score < 10) {
+    scoreTitle.textContent = "0" + score;
     } else {
-    skoreNapis.textContent = skore;
+    scoreTitle.textContent = score;
     }
-    var kruhy = document.getElementsByClassName("kruh");
-    if (kruhy.length == 0) {
-        Zviditelnit([napis]);
-        hraBezi = false;
+    var circles = document.getElementsByClassName("circle");
+    if (circles.length == 0) {
+        ShowElements([mainTitle]);
+        gameIsOn = false;
 
         setTimeout(function(){
-        Zviditelnit([tlacitkoZnovu, tlacitkoDomu, anchorDomu]);
+        ShowElements([buttonReplay, buttonHome, anchorHome]);
         }, 1000)
     }
 }
 
-function Zviditelnit(elements) {
+function ShowElements(elements) {
     for (i = 0; i < elements.length; i++) {
     elements[i].style.visibility = "visible";
     }
 }
 
-function HratZnovu() {
+function Replay() {
     location.reload();
 }

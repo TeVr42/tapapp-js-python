@@ -8,11 +8,13 @@
 
   </body>
 {% else: %}
-<body onload="Hrat()" onclick="KlikutiKonec()">
-    <h1 id="hlavniNapis" class="title-margin" style="visibility: hidden"> Moc brzo!</h1>
-	<button id="tlacitkoZnovu" class="{{ settings['light_btn'] }}" onclick="HratZnovu()" style="visibility: hidden">Hrát znovu ⏱</button>
-    <a href="{{ url_for('colored', color=mode)}}" id="anchorDomu" style="visibility: hidden"><button id="tlacitkoDomu" class="{{ settings['dark_btn'] }}" style="visibility: hidden">Domů 🏠 </button></a>
-    <img id="tlacitkoKruh" class="kruh-tlacitko" src="/static/images/{{ kruhy }}" style="visibility: hidden" onclick="SpravneKliknuti()">
+<body onload="Game()" onclick="EndingClick()">
+    <h1 id="mainTitle" class="title-margin" style="visibility: hidden"> Moc brzo!</h1>
+	<button id="buttonReplay" class="{{ settings['light_btn'] }}" onclick="Replay()" style="visibility: hidden">Hrát znovu ⏱</button>
+    <a href="{{ url_for('colored', color=mode)}}" id="anchorHome" style="visibility: hidden">
+        <button id="buttonHome" class="{{ settings['dark_btn'] }}" style="visibility: hidden">Domů 🏠 </button>
+    </a>
+    <img id="circleToClick" class="circle-button" src="/static/images/{{ kruhy }}" style="visibility: hidden" onclick="OnRightClick()">
 
     <script src="{{ url_for('static', filename='script3.js') }}"></script>
 </body>

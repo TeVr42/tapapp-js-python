@@ -1,56 +1,56 @@
-var velkyKruh = document.getElementById("tlacitkoKruh");
-var tlacitkoZnovu = document.getElementById("tlacitkoZnovu");
-var napis = document.getElementById("hlavniNapis");
-var tlacitkoDomu = document.getElementById("tlacitkoDomu");
-var anchorDomu = document.getElementById("anchorDomu");
+var mainCircle = document.getElementById("circleToClick");
+var buttonReplay = document.getElementById("buttonReplay");
+var mainTitle = document.getElementById("mainTitle");
+var buttonHome = document.getElementById("buttonHome");
+var anchorHome = document.getElementById("anchorHome");
 
-var malaObrazovka = window.matchMedia("(max-width: 600px)");
+var smallScreen = window.matchMedia("(max-width: 600px)");
 
 var start;
-var hraBezi = true;
+var gameIsOn = true;
 
-function Hrat() {
-    var nahodnyCas = Math.floor(Math.random() * 8000) + 500;
-    setTimeout(SpustitOdpocet, nahodnyCas);
+function Game() {
+    var randomTime = Math.floor(Math.random() * 5000) + 500;
+    setTimeout(StartTimer, randomTime);
 }
 
-function SpustitOdpocet() {
-    if (hraBezi) {
-    Zviditelnit([velkyKruh]);
+function StartTimer() {
+    if (gameIsOn) {
+    ShowElements([mainCircle]);
     start = Date.now();
     }
 }
 
-function SpravneKliknuti() {
-    KlikutiKonec();
-    var prodleva = (Date.now() - start) + " milisekund";
-    napis.textContent = prodleva;
-    if (malaObrazovka.matches) {
-    napis.style.fontSize = "2.6rem";
+function OnRightClick() {
+    EndingClick();
+    var waitingTime = (Date.now() - start) + " milisekund";
+    mainTitle.textContent = waitingTime;
+    if (smallScreen.matches) {
+    mainTitle.style.fontSize = "2.6rem";
     } else {
-    napis.style.fontSize = "3.2rem";
+    mainTitle.style.fontSize = "3.2rem";
     }
 }
 
 
-function KlikutiKonec() {
-    hraBezi = false;
-    Zviditelnit([napis, tlacitkoZnovu, tlacitkoDomu, anchorDomu]);
-    Schovat([velkyKruh]);
+function EndingClick() {
+    gameIsOn = false;
+    ShowElements([mainTitle, buttonReplay, buttonHome, anchorHome]);
+    HideElements([mainCircle]);
 }
 
-function Schovat(elements) {
+function HideElements(elements) {
     for (i = 0; i < elements.length; i++) {
     elements[i].style.visibility = "hidden";
     }
 }
 
-function Zviditelnit(elements) {
+function ShowElements(elements) {
     for (i = 0; i < elements.length; i++) {
     elements[i].style.visibility = "visible";
     }
 }
 
-function HratZnovu() {
+function Replay() {
     location.reload();
 }

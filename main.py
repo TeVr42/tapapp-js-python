@@ -60,7 +60,7 @@ def colored(color):
 def hra1(color, game, speed):
     colormode = get_colormode(color)
     return render_template("game1.html",
-                           game=is_game_on(game), speed=speed, mode=colormode[0], kruhy=colormode[1], settings=settings)
+                           game=is_game_on(game), speed=speed, mode=colormode[0], circles_colors=colormode[1], settings=settings)
 
 
 @app.route('/<color>/presnost/<int:game>/<int:speed>')

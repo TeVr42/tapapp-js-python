@@ -3,19 +3,22 @@
 
 {% if not game: %}
 <body>
+
 	<h1 class="title-margin"> Postřeh </h1>
-    <a href="{{ url_for('hra1', color=mode, game=1, speed=800) }}"><button class="{{ settings['light_btn'] }}">Začátečník 🐭</button></a>
-    <a href="{{ url_for('hra1', color=mode, game=1, speed=600) }}"><button class="{{ settings['light_btn'] }}">Pokročilý 🐰</button></a>
-    <a href="{{ url_for('hra1', color=mode, game=1, speed=400) }}"><button class="{{ settings['light_btn'] }}">Expert 🐺</button></a>
-    <a href="{{ url_for('hra1', color=mode, game=1, speed=200) }}"><button class="{{ settings['light_btn'] }}">Mistr 🦏</button></a>
+    {% for new_btn in [[800, "Začátečník 🐭"], [600, "Pokročilý 🐰"], [400, "Expert 🐺"], [200, "Mistr 🦏"]]: %}
+        <a href="{{ url_for('hra1', color=mode, game=1, speed=new_btn[0]) }}"><button class="{{ settings['light_btn'] }}">{{ new_btn[1] }}</button></a>
+    {% endfor %}
     <a href="{{ url_for('colored', color=mode)}}" ><button class="{{ settings['dark_btn'] }}">Domů 🏠</button></a>
 </body>
+
 {% else: %}
-<body onload="Hra({{ speed }}, {{ kruhy }})">
-	<h2 id="skoreNapis"> 00 </h2>
-    <h1 id="hlavniNapis" style="visibility: hidden" class="title-margin-bottom"> Uklizeno! </h1>
-	<button id="tlacitkoZnovu" class="{{ settings['light_btn'] }}" onclick="HratZnovu()" style="visibility: hidden">Hrát znovu 🐘</button>
-    <a id="anchorDomu" href="{{ url_for('colored', color=mode)}}" style="visibility: hidden"><button  id="tlacitkoDomu" class="{{ settings['dark_btn'] }}" style="visibility: hidden">Domů 🏠</button></a>
+<body onload="Game({{ speed }}, {{ circles_colors }})">
+	<h2 id="scoreTitle"> 00 </h2>
+    <h1 id="mainTitle" style="visibility: hidden" class="title-margin-bottom"> Uklizeno! </h1>
+	<button id="buttonReplay" class="{{ settings['light_btn'] }}" onclick="Replay()" style="visibility: hidden">Hrát znovu 🐘</button>
+    <a id="anchorHome" href="{{ url_for('colored', color=mode)}}" style="visibility: hidden">
+        <button  id="buttonHome" class="{{ settings['dark_btn'] }}" style="visibility: hidden">Domů 🏠</button>
+    </a>
 <script src="{{ url_for('static', filename='script1.js') }}"></script>
 </body>
 {% endif %}
