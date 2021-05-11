@@ -66,12 +66,10 @@ function OnClick(event) {
     }
     var circles = document.getElementsByClassName("circle");
     if (circles.length == 0) {
-        ShowElements([mainTitle]);
         gameIsOn = false;
-
         setTimeout(function(){
-        ShowElements([buttonReplay, buttonHome, anchorHome]);
-        }, 1000)
+        ShowElements([buttonReplay, buttonHome, anchorHome, mainTitle]);
+        }, 500)
     }
 }
 

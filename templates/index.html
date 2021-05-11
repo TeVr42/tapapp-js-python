@@ -9,21 +9,15 @@
     <a href="{{ url_for('info', color=mode) }}"><button class="{{ settings['dark_btn'] }}">Jak hrát ❔ </button></a>
 
     <div class="btn-group" style="margin-top: 20px">
-        {% if mode == "light": %}
-      <a href="{{ url_for('colored', color='light') }}" class="{{ settings['mode_light_btn'] }}">Světlý</a>
+    {% for new_btn in [["light", "Světlý"], ["dark", "Tmavý"], ["pink", "Růžový"]]: %}
+
+        {% if mode == new_btn[0]: %}
+      <a href="{{ url_for('colored', color=new_btn[0]) }}" class="{{ settings['mode_light_btn'] }}">{{new_btn[1]}}</a>
         {% else: %}
-      <a href="{{ url_for('colored', color='light') }}" class="{{ settings['mode_dark_btn'] }}">Světlý</a>
+      <a href="{{ url_for('colored', color=new_btn[0]) }}" class="{{ settings['mode_dark_btn'] }}">{{new_btn[1]}}</a>
         {% endif %}
-        {% if mode == "dark": %}
-        <a href="{{ url_for('colored', color='dark') }}" class="{{ settings['mode_light_btn'] }}">Tmavý</a>
-        {% else: %}
-      <a href="{{ url_for('colored', color='dark') }}" class="{{ settings['mode_dark_btn'] }}">Tmavý</a>
-        {% endif %}
-        {% if mode == "pink": %}
-      <a href="{{ url_for('colored', color='pink') }}" class="{{ settings['mode_light_btn'] }}">Růžový</a>
-        {% else: %}
-      <a href="{{ url_for('colored', color='pink') }}" class="{{ settings['mode_dark_btn'] }}">Růžový</a>
-        {% endif %}
+
+    {% endfor %}
     </div>
 
   </body>
