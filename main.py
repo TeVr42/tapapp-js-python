@@ -30,20 +30,16 @@ settings = {
 
 
 def get_colormode(color):
-    if color == LIGHT[0]:
-        return LIGHT
-    elif color == PINK[0]:
-        return PINK
-    else:
-        return DARK
+    for color_mode in [LIGHT, PINK, DARK]:
+        if color == color_mode[0]:
+            return color_mode
 
 
 def is_game_on(game):
     if game == 0:
-        game_status = False
+        return False
     else:
-        game_status = True
-    return game_status
+        return True
 
 
 @app.route('/')
