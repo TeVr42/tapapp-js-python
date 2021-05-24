@@ -1,19 +1,19 @@
 body {
-    color: #1687a7;
-    background-color: #f1f3f8;
+    color: #79a3b1;
+    background-color: #fcf8ec;
 }
 
 .simple-button, .mode-btn-light {
-    color: #1687a7;
-    border-color: #1687a7;
+    color: #79a3b1;
+    border-color: #79a3b1;
 }
 
 .btn-light, .mode-btn-dark {
-    background-color: #1687a7;
-    color: #f1f3f8;
+    background-color: #79a3b1;
+    color: #fcf8ec;
 }
 .btn:hover {
-    color: #f1f3f8;
-    background-color: #1687a7;
-    border-color: #1687a7;
+    color: #fcf8ec;
+    background-color: #79a3b1;
+    border-color: #79a3b1;
 }
