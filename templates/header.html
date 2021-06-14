@@ -16,13 +16,29 @@
 	</script>
 
     <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type="text/css" />
-	{% if mode == "light": %}
-    	<link href="{{ url_for('static', filename='light.css') }}" rel="stylesheet" type="text/css" />
-	{% elif mode == "dark": %}
-		<link href="{{ url_for('static', filename='dark.css') }}" rel="stylesheet" type="text/css" />
-	{% else: %}
-		<link href="{{ url_for('static', filename='pink.css') }}" rel="stylesheet" type="text/css" />
-	{% endif %}
 	<link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+
+	<style>
+	body {
+		color: {{main_colors[0]}};
+		background-color: {{main_colors[1]}};
+	}
+
+	.simple-button, .mode-btn-light {
+		color: {{main_colors[0]}};
+		border-color: {{main_colors[0]}};
+	}
+
+	.btn-light, .mode-btn-dark {
+		background-color: {{main_colors[0]}};
+		color: {{main_colors[1]}};
+	}
+
+	.btn:hover {
+		color: {{main_colors[1]}};
+		background-color: {{main_colors[0]}};
+		border-color: {{main_colors[0]}};
+	}
+	</style>
 </head>
 
