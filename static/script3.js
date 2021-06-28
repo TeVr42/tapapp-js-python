@@ -11,7 +11,7 @@ var start;
 var gameIsOn = true;
 
 function Game() {
-    var randomTime = Math.floor(Math.random() * 5000) + 500;
+    var randomTime = Math.floor(Math.random() * 5000) + 800;
     setTimeout(StartTimer, randomTime);
 }
 
