@@ -2,7 +2,7 @@ LIGHT = {
     "main": "light",
     "game1": ["k2.png", "k3.png", "k4.png", "k5.png", "k9.png", "k10.png", "k16.png", "k17.png", "k18.png", "k19.png",
      "k21.png", "k23.png"],
-    "game2": ["k2.png", "k3.png", "k5.png", "k9.png", "k10.png", "k18.png"],
+    "game2": ["k2.png", "k3.png", "k5.png", "k10.png", "k18.png"],
     "game3": "k22.png",
     "text_bg": ["#79a3b1", "#E1E5EA"],
 }
@@ -17,7 +17,7 @@ PINK = {
     "main": "pink",
     "game1": ["k2.png", "k3.png", "k4.png", "k5.png", "k9.png", "k10.png", "k16.png", "k17.png", "k18.png", "k19.png",
               "k21.png", "k23.png"],
-    "game2": ["k2.png", "k3.png", "k5.png", "k9.png", "k10.png", "k18.png"],
+    "game2": ["k2.png", "k3.png", "k5.png", "k10.png", "k18.png"],
     "game3": "k20.png",
     "text_bg": ["#DA7F8F", "#FAF3F3"]
 }
