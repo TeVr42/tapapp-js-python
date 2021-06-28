@@ -1,8 +1,9 @@
-var mainCircle = document.getElementById("circleToClick");
 var buttonReplay = document.getElementById("buttonReplay");
 var mainTitle = document.getElementById("mainTitle");
 var buttonHome = document.getElementById("buttonHome");
 var anchorHome = document.getElementById("anchorHome");
+
+var myBackground = document.getElementById("backgroundGame");
 
 var smallScreen = window.matchMedia("(max-width: 600px)");
 
@@ -16,8 +17,9 @@ function Game() {
 
 function StartTimer() {
     if (gameIsOn) {
-    ShowElements([mainCircle]);
     start = Date.now();
+    myBackground.setAttribute("class", "color_bg_game3");
+    myBackground.setAttribute("onclick", "OnRightClick()");
     }
 }
 
@@ -36,13 +38,8 @@ function OnRightClick() {
 function EndingClick() {
     gameIsOn = false;
     ShowElements([mainTitle, buttonReplay, buttonHome, anchorHome]);
-    HideElements([mainCircle]);
-}
-
-function HideElements(elements) {
-    for (i = 0; i < elements.length; i++) {
-    elements[i].style.visibility = "hidden";
-    }
+    myBackground.setAttribute("class", "");
+    myBackground.setAttribute("onclick", "");
 }
 
 function ShowElements(elements) {

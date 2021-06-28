@@ -47,7 +47,7 @@ def hra2(color, game, speed):
 def hra3(color, game):
     colormode = get_colormode(color)
     return render_template("game3.html",
-                           game=is_game_on(game), mode=colormode["main"], kruhy=colormode["game3"],
+                           game=is_game_on(game), mode=colormode["main"],
                            settings=SETTINGS, title="Rychlost", main_colors=colormode["text_bg"])
 
 
