@@ -5,7 +5,7 @@
 <body>
 
 	<h1 class="title-margin"> Postřeh </h1>
-    {% for new_btn in [[800, "Začátečník 🐭"], [600, "Pokročilý 🐰"], [500, "Expert 🐺"], [400, "Mistr 🦏"]]: %}
+    {% for new_btn in [[700, "Začátečník 🐭"], [500, "Pokročilý 🐰"], [400, "Expert 🐺"], [300, "Mistr 🦏"]]: %}
         <a href="{{ url_for('hra1', color=mode, game=1, speed=new_btn[0]) }}"><button class="{{ settings['light_btn'] }}">{{ new_btn[1] }}</button></a>
     {% endfor %}
     <a href="{{ url_for('colored', color=mode)}}" ><button class="{{ settings['dark_btn'] }}">Domů 🏠</button></a>
