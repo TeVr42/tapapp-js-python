@@ -12,8 +12,9 @@
     <h1 id="mainTitle" class="title-margin" style="visibility: hidden"> Moc brzo!</h1>
 	<button id="buttonReplay" class="{{ settings['light_btn'] }}" onclick="Replay()" style="visibility: hidden">Hrát znovu ⏱</button>
     <a href="{{ url_for('colored', color=mode)}}" id="anchorHome" style="visibility: hidden">
-        <button id="buttonHome" class="{{ settings['dark_btn'] }}" style="visibility: hidden">Domů 🏠 </button>
+    <button id="buttonHome" class="{{ settings['dark_btn'] }}" style="visibility: hidden">Domů 🏠 </button>
     </a>
+    <img id="circleToClick" class="circle-button" src="/static/images/{{ kruhy }}" style="visibility: hidden" onclick="OnRightClick()">
     <script src="{{ url_for('static', filename='script3.js') }}"></script>
 </body>
 {% endif %}

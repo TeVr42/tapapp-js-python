@@ -2,6 +2,7 @@ var buttonReplay = document.getElementById("buttonReplay");
 var mainTitle = document.getElementById("mainTitle");
 var buttonHome = document.getElementById("buttonHome");
 var anchorHome = document.getElementById("anchorHome");
+var mainCircle = document.getElementById("circleToClick");
 
 var myBackground = document.getElementById("backgroundGame");
 
@@ -17,9 +18,10 @@ function Game() {
 
 function StartTimer() {
     if (gameIsOn) {
-    start = Date.now();
+    ShowElements([mainCircle]);
     myBackground.setAttribute("class", "color_bg_game3");
     myBackground.setAttribute("onclick", "OnRightClick()");
+    start = Date.now();
     }
 }
 
@@ -40,6 +42,13 @@ function EndingClick() {
     ShowElements([mainTitle, buttonReplay, buttonHome, anchorHome]);
     myBackground.setAttribute("class", "");
     myBackground.setAttribute("onclick", "");
+    HideElements([mainCircle]);
+}
+
+function HideElements(elements) {
+    for (i = 0; i < elements.length; i++) {
+    elements[i].style.visibility = "hidden";
+    }
 }
 
 function ShowElements(elements) {
