@@ -27,12 +27,12 @@ def colored(color):
     return render_template("index.html", mode=color, settings=SETTINGS, title="Domů", main_colors=get_colormode(color)["text_bg"])
 
 
-@app.route('/<color>/postreh/<int:game>/<int:speed>')
-def hra1(color, game, speed):
+@app.route('/<color>/postreh/<int:game>/<int:speed>/<int:prepared_circles>')
+def hra1(color, game, speed, prepared_circles):
     colormode = get_colormode(color)
     return render_template("game1.html",
                            game=is_game_on(game), speed=speed, mode=colormode["main"], circles_colors=colormode["game1"],
-                           settings=SETTINGS, title="Postřeh", main_colors=colormode["text_bg"])
+                           settings=SETTINGS, title="Postřeh", main_colors=colormode["text_bg"], prepared_circles=prepared_circles)
 
 
 @app.route('/<color>/presnost/<int:game>/<int:speed>')

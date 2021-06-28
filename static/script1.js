@@ -19,8 +19,11 @@ var mainTitle = document.getElementById("mainTitle");
 var buttonHome = document.getElementById("buttonHome");
 var anchorHome = document.getElementById("anchorHome");
 
-function Game(speed, sourceColors) {
+function Game(speed, sourceColors, prepared_circles=0) {
     srcImages = sourceColors;
+    for (a = 0; a < prepared_circles; a++) {
+    NewCircle();
+    }
     setInterval(NewCircle, speed);
 }
 
