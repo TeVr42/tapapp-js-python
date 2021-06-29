@@ -2,7 +2,7 @@
 
 {% if not game: %}
 <body>
-	<h1 class="title-margin"> Rychlost </h1>
+	<h1 class="title-margin"> Reakční doba </h1>
     <a href="{{ url_for('hra3', color=mode, game=1) }}"><button class="{{ settings['light_btn'] }}">Start 🏁</button></a>
     <a href="{{ url_for('colored', color=mode)}}"><button class="{{ settings['dark_btn'] }}">Domů 🏠 </button></a>
 
