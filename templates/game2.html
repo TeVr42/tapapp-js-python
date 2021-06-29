@@ -3,7 +3,7 @@
 {% if not game: %}
 <body>
 
-    <h1 class="title-margin"> Přesnost </h1>
+    <h1 class="title-margin"> Stejné barvy </h1>
     {% for new_btn in [[2000, "Pomalu 🐨"], [1400, "Středně 🦝"], [800, "Rychle 🐼"]]: %}
         <a href="{{ url_for('hra2', color=mode, game=1, speed=new_btn[0]) }}"><button class="{{ settings['light_btn'] }}">{{ new_btn[1] }}</button></a>
     {% endfor %}
