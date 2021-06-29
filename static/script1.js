@@ -67,13 +67,23 @@ function OnClick(event) {
     } else {
     scoreTitle.textContent = score;
     }
+
     var circles = document.getElementsByClassName("circle");
     if (circles.length == 0) {
+        GameOver();
+    }
+    if (circles.length >= 100 || (circles.length >= 5 && score >= 250)) {
+        GameOver();
+        HideElements(circles);
+        mainTitle.textContent = "Příliš mnoho kruhů!";
+    }
+}
+
+function GameOver() {
         gameIsOn = false;
         setTimeout(function(){
         ShowElements([buttonReplay, buttonHome, anchorHome, mainTitle]);
         }, 500)
-    }
 }
 
 function ShowElements(elements) {
@@ -82,6 +92,11 @@ function ShowElements(elements) {
     }
 }
 
+function HideElements(elements) {
+    for (i = 0; i < elements.length; i++) {
+    elements[i].style.visibility = "hidden";
+    }
+}
 function Replay() {
     location.reload();
 }
