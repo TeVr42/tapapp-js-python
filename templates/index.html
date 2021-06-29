@@ -3,10 +3,10 @@
 <body>
 
 	<h1 class="title-margin"> Moje hry </h1>
-	<a href="{{ url_for('hra1', color=mode, game=0, speed=0, prepared_circles=0) }}"><button class="{{ settings['light_btn'] }}">Postřeh 👀</button></a>
-    <a href="{{ url_for('hra2', color=mode, game=0, speed=0) }}"><button class="{{ settings['light_btn'] }}">Přesnost 🎯</button></a>
-    <a href="{{ url_for('hra3', color=mode, game=0) }}"><button class="{{ settings['light_btn'] }}">Rychlost ⏱</button></a>
-    <a href="{{ url_for('info', color=mode) }}"><button class="{{ settings['dark_btn'] }}">Jak hrát ❔ </button></a>
+	<a href="{{ url_for('hra1', color=mode, game=0, speed=0, prepared_circles=0) }}"><button class="{{ settings['light_btn'] }}">Vyčisti obrazovku</button></a>
+    <a href="{{ url_for('hra2', color=mode, game=0, speed=0) }}"><button class="{{ settings['light_btn'] }}">Stejné barvy</button></a>
+    <a href="{{ url_for('hra3', color=mode, game=0) }}"><button class="{{ settings['light_btn'] }}">Rychlost</button></a>
+    <a href="{{ url_for('info', color=mode) }}"><button class="{{ settings['dark_btn'] }}">Jak hrát ? </button></a>
 
     <div class="btn-group" style="margin-top: 20px">
     {% for new_btn in [["light", "Světlý"], ["dark", "Tmavý"], ["pink", "Růžový"]]: %}
