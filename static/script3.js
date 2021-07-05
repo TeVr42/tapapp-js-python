@@ -6,7 +6,7 @@ var mainCircle = document.getElementById("circleToClick");
 
 var myBackground = document.getElementById("backgroundGame");
 
-var smallScreen = window.matchMedia("(max-width: 600px)");
+var smallScreen = window.matchMedia("(max-width: 1024px)");
 
 var start;
 var gameIsOn = true;

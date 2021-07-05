@@ -69,7 +69,7 @@ h3 {
     width: 40%;
 }
 
-@media only screen and (max-width: 600px) {
+@media (max-width: 1024px) {
 h1 {
     font-size: 3.5rem;
 }

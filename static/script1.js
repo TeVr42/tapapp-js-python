@@ -2,7 +2,7 @@ var srcImages;
 
 var documentWidth;
 var documentHeight;
-var smallScreen = window.matchMedia("(max-width: 600px)");
+var smallScreen = window.matchMedia("(max-width: 1024px)");
 
 var circleWidth;
 var circleX;
