@@ -27,28 +27,28 @@ def colored(color):
     return render_template("index.html", mode=color, settings=SETTINGS, title="Domů", main_colors=get_colormode(color)["text_bg"])
 
 
-@app.route('/<color>/postreh/<int:game>/<int:speed>/<int:prepared_circles>')
+@app.route('/<color>/hra1/<int:game>/<int:speed>/<int:prepared_circles>')
 def hra1(color, game, speed, prepared_circles):
     colormode = get_colormode(color)
     return render_template("game1.html",
                            game=is_game_on(game), speed=speed, mode=colormode["main"], circles_colors=colormode["game1"],
-                           settings=SETTINGS, title="Postřeh", main_colors=colormode["text_bg"], prepared_circles=prepared_circles)
+                           settings=SETTINGS, title="Vyčisti obrazovku", main_colors=colormode["text_bg"], prepared_circles=prepared_circles)
 
 
-@app.route('/<color>/presnost/<int:game>/<int:speed>')
+@app.route('/<color>/hra2/<int:game>/<int:speed>')
 def hra2(color, game, speed):
     colormode = get_colormode(color)
     return render_template("game2.html",
                            game=is_game_on(game), speed=speed, mode=colormode["main"], kruhy=colormode["game2"],
-                           settings=SETTINGS, title="Přesnost", main_colors=colormode["text_bg"])
+                           settings=SETTINGS, title="Stejné barvy", main_colors=colormode["text_bg"])
 
 
-@app.route('/<color>/rychlost/<int:game>')
+@app.route('/<color>/hra3/<int:game>')
 def hra3(color, game):
     colormode = get_colormode(color)
     return render_template("game3.html",
                            game=is_game_on(game), mode=colormode["main"], kruhy=colormode["game3"],
-                           settings=SETTINGS, title="Rychlost", main_colors=colormode["text_bg"])
+                           settings=SETTINGS, title="Reakční doba", main_colors=colormode["text_bg"])
 
 
 @app.route('/<color>/info')
