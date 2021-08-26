@@ -9,7 +9,7 @@
     <a href="{{ url_for('info', color=mode) }}"><button class="{{ settings['dark_btn'] }}">Jak hrát ? </button></a>
 
     <div class="btn-group" style="margin-top: 20px">
-    {% for new_btn in [["light", "Světlý"], ["dark", "Tmavý"], ["pink", "Růžový"]]: %}
+    {% for new_btn in [["light", "Světlý"], ["dark", "Tmavý"], ["purple", "Fialový"]]: %}
 
         {% if mode == new_btn[0]: %}
       <a href="{{ url_for('colored', color=new_btn[0]) }}" class="{{ settings['mode_light_btn'] }}">{{new_btn[1]}}</a>

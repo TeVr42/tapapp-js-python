@@ -1,11 +1,11 @@
 from flask import Flask, render_template
-from settings import SETTINGS, LIGHT, DARK, PINK
+from settings import SETTINGS, LIGHT, DARK, PURPLE
 
 app = Flask(__name__)
 
 
 def get_colormode(color):
-    for color_mode in [LIGHT, PINK, DARK]:
+    for color_mode in [LIGHT, PURPLE, DARK]:
         if color == color_mode["main"]:
             return color_mode
 
