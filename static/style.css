@@ -26,6 +26,7 @@ h3 {
     width: 70%;
     font-size: 1.2rem;
     text-align: justify;
+    margin: auto;
 }
 
 .simple-button {
@@ -67,9 +68,11 @@ h3 {
 .title-margin {
     margin: 70px 0;
 }
+
 .title-margin-top {
     margin-top: 70px;
 }
+
 .title-margin-bottom {
     margin-bottom: 70px;
 }
@@ -81,8 +84,8 @@ h1 {
 }
 
 .info-text {
-    margin: 0 30%;
     width: 40%;
+    line-height: 2;
 }
 .circle {
     width: 5%;
