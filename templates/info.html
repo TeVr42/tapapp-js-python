@@ -1,11 +1,11 @@
-{% include "header.html" %}
+{% include "hlavicka.html" %}
 
 <body>
 
-	<h1 class="title-margin"> Jak hrát? </h1>
+	<h1 class="napis-odsazeni"> Jak hrát? </h1>
 
     <div class="info-text">
-    <p class="title-margin-bottom">
+    <p class="napis-spodni-odsazeni">
 
         <strong>Vyčisti obrazovku</strong>: klikáním na kruhy co nejdříve vyčisti displej. Můžeš si zvolit rychlost. Pokus se o co nejnižší skóre!
         <br>
@@ -15,6 +15,6 @@
 
     </p>
     </div>
-    <a href="{{ url_for('colored', color=mode) }}"><button class="{{ settings['dark_btn'] }}">Domů 🏠</button></a>
+    <a href="{{ url_for('barevny', barva=mode) }}"><button class="{{ nastaveni['tmavy_btn'] }}">Domů 🏠</button></a>
   </body>
 </html>

@@ -1,0 +1,21 @@
+{% include "hlavicka.html" %}
+
+{% if not hra: %}
+<body>
+	<h1 class="napis-odsazeni"> Reakční doba </h1>
+    <a href="{{ url_for('hra3', barva=mode, hra=1) }}"><button class="{{ nastaveni['svetly_btn'] }}">Start 🏁</button></a>
+    <a href="{{ url_for('barevny', barva=mode)}}"><button class="{{ nastaveni['tmavy_btn'] }}">Domů 🏠 </button></a>
+
+  </body>
+{% else: %}
+<body id="herniPozadi" onload="Hra()" onclick="SpatneKliknuti()">
+    <h1 id="hlavniNapis" class="napis-odsazeni" style="visibility: hidden"> Moc brzo!</h1>
+	<button id="tlacitkoZnovu" class="{{ nastaveni['svetly_btn'] }}" onclick="HrajZnovu()" style="visibility: hidden">Hrát znovu ⏱</button>
+    <a href="{{ url_for('barevny', barva=mode)}}" id="odkazDomu" style="visibility: hidden">
+    <button id="tlacitkoDomu" class="{{ nastaveni['tmavy_btn'] }}" style="visibility: hidden">Domů 🏠 </button>
+    </a>
+    <img id="kruhKeKliknuti" class="kruh-tlacitko" src="/static/images/{{ kruhy }}" style="visibility: hidden" onclick="PriSpravnemKliknuti()">
+    <script src="{{ url_for('static', filename='script3.js') }}"></script>
+</body>
+{% endif %}
+</html>

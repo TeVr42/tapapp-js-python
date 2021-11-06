@@ -1,60 +1,60 @@
 from flask import Flask, render_template
-from settings import SETTINGS, LIGHT, DARK, PURPLE
+from nastaveni import NASTAVENI, SVETLY, TMAVY, FIALOVY
 
 app = Flask(__name__)
 
 
-def get_colormode(color):
-    for color_mode in [LIGHT, PURPLE, DARK]:
-        if color == color_mode["main"]:
-            return color_mode
+def urci_barvu(barva):
+    for barva_mode in [SVETLY, FIALOVY, TMAVY]:
+        if barva == barva_mode["hlavni"]:
+            return barva_mode
 
 
-def is_game_on(game):
-    if game == 0:
+def bezi_hra(hra):
+    if hra == 0:
         return False
     else:
         return True
 
 
 @app.route('/')
-def home():
-    return render_template("index.html", mode=DARK["main"], settings=SETTINGS, title="Domů", main_colors=DARK["text_bg"])
+def domu():
+    return render_template("index.html", mode=TMAVY["hlavni"], nastaveni=NASTAVENI, napis="Domů", hlavni_barva=TMAVY["text_a_pozadi"])
 
 
-@app.route('/<color>')
-def colored(color):
-    return render_template("index.html", mode=color, settings=SETTINGS, title="Domů", main_colors=get_colormode(color)["text_bg"])
+@app.route('/<barva>')
+def barevny(barva):
+    return render_template("index.html", mode=barva, nastaveni=NASTAVENI, napis="Domů", hlavni_barva=urci_barvu(barva)["text_a_pozadi"])
 
 
-@app.route('/<color>/hra1/<int:game>/<int:speed>/<int:prepared_circles>')
-def hra1(color, game, speed, prepared_circles):
-    colormode = get_colormode(color)
-    return render_template("game1.html",
-                           game=is_game_on(game), speed=speed, mode=colormode["main"], circles_colors=colormode["game1"],
-                           settings=SETTINGS, title="Vyčisti obrazovku", main_colors=colormode["text_bg"], prepared_circles=prepared_circles)
+@app.route('/<barva>/hra1/<int:hra>/<int:rychlost>/<int:predpripravene_kruhy>')
+def hra1(barva, hra, rychlost, predpripravene_kruhy):
+    barevny_mod = urci_barvu(barva)
+    return render_template("hra1.html",
+                           hra=bezi_hra(hra), rychlost=rychlost, mode=barevny_mod["hlavni"], barvy_kruhu=barevny_mod["hra1"],
+                           nastaveni=NASTAVENI, napis="Vyčisti obrazovku", hlavni_barva=barevny_mod["text_a_pozadi"], predpripravene_kruhy=predpripravene_kruhy)
 
 
-@app.route('/<color>/hra2/<int:game>/<int:speed>')
-def hra2(color, game, speed):
-    colormode = get_colormode(color)
-    return render_template("game2.html",
-                           game=is_game_on(game), speed=speed, mode=colormode["main"], kruhy=colormode["game2"],
-                           settings=SETTINGS, title="Stejné barvy", main_colors=colormode["text_bg"])
+@app.route('/<barva>/hra2/<int:hra>/<int:rychlost>')
+def hra2(barva, hra, rychlost):
+    barevny_mod = urci_barvu(barva)
+    return render_template("hra2.html",
+                           hra=bezi_hra(hra), rychlost=rychlost, mode=barevny_mod["hlavni"], kruhy=barevny_mod["hra2"],
+                           nastaveni=NASTAVENI, napis="Stejné barvy", hlavni_barva=barevny_mod["text_a_pozadi"])
 
 
-@app.route('/<color>/hra3/<int:game>')
-def hra3(color, game):
-    colormode = get_colormode(color)
-    return render_template("game3.html",
-                           game=is_game_on(game), mode=colormode["main"], kruhy=colormode["game3"],
-                           settings=SETTINGS, title="Reakční doba", main_colors=colormode["text_bg"])
+@app.route('/<barva>/hra3/<int:hra>')
+def hra3(barva, hra):
+    barevny_mod = urci_barvu(barva)
+    return render_template("hra3.html",
+                           hra=bezi_hra(hra), mode=barevny_mod["hlavni"], kruhy=barevny_mod["hra3"],
+                           nastaveni=NASTAVENI, napis="Reakční doba", hlavni_barva=barevny_mod["text_a_pozadi"])
 
 
-@app.route('/<color>/info')
-def info(color):
-    return render_template("info.html", mode=get_colormode(color)["main"], settings=SETTINGS, title="Info",
-                           main_colors=get_colormode(color)["text_bg"])
+@app.route('/<barva>/info')
+def info(barva):
+    return render_template("info.html", mode=urci_barvu(barva)["hlavni"], nastaveni=NASTAVENI, napis="Info",
+                           hlavni_barva=urci_barvu(barva)["text_a_pozadi"])
 
 
 if __name__ == "__main__":

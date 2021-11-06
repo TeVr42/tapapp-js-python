@@ -1,62 +1,62 @@
-var buttonReplay = document.getElementById("buttonReplay");
-var mainTitle = document.getElementById("mainTitle");
-var buttonHome = document.getElementById("buttonHome");
-var anchorHome = document.getElementById("anchorHome");
-var mainCircle = document.getElementById("circleToClick");
+var tlacitkoZnovu = document.getElementById("tlacitkoZnovu");
+var hlavniNapis = document.getElementById("hlavniNapis");
+var tlacitkoDomu = document.getElementById("tlacitkoDomu");
+var odkazDomu = document.getElementById("odkazDomu");
+var hlavniKruh = document.getElementById("kruhKeKliknuti");
 
-var myBackground = document.getElementById("backgroundGame");
+var mePozadi = document.getElementById("herniPozadi");
 
-var smallScreen = window.matchMedia("(max-width: 1024px)");
+var malaObrazovka = window.matchMedia("(max-width: 1024px)");
 
 var start;
-var gameIsOn = true;
+var hraBezi = true;
 
-function Game() {
-    var randomTime = Math.floor(Math.random() * 5000) + 800;
-    setTimeout(StartTimer, randomTime);
+function Hra() {
+    var nahodnyCas = Math.floor(Math.random() * 5000) + 800;
+    setTimeout(ZacniOdpocet, nahodnyCas);
 }
 
-function StartTimer() {
-    if (gameIsOn) {
-    ShowElements([mainCircle]);
-    myBackground.setAttribute("class", "color_bg_game3");
-    myBackground.setAttribute("onclick", "OnRightClick()");
+function ZacniOdpocet() {
+    if (hraBezi) {
+    ZobrazElementy([hlavniKruh]);
+    mePozadi.setAttribute("class", "color_bg_game3");
+    mePozadi.setAttribute("onclick", "OnRightClick()");
     start = Date.now();
     }
 }
 
-function OnRightClick() {
-    EndingClick();
-    var waitingTime = (Date.now() - start) + " milisekund";
-    mainTitle.textContent = waitingTime;
-    if (smallScreen.matches) {
-    mainTitle.style.fontSize = "2.6rem";
+function PriSpravnemKliknuti() {
+    SpatneKliknuti();
+    var casovaProdleva = (Date.now() - start) + " milisekund";
+    hlavniNapis.textContent = casovaProdleva;
+    if (malaObrazovka.matches) {
+    hlavniNapis.style.fontSize = "2.6rem";
     } else {
-    mainTitle.style.fontSize = "3.2rem";
+    hlavniNapis.style.fontSize = "3.2rem";
     }
 }
 
 
-function EndingClick() {
-    gameIsOn = false;
-    ShowElements([mainTitle, buttonReplay, buttonHome, anchorHome]);
-    myBackground.setAttribute("class", "");
-    myBackground.setAttribute("onclick", "");
-    HideElements([mainCircle]);
+function SpatneKliknuti() {
+    hraBezi = false;
+    ZobrazElementy([hlavniNapis, tlacitkoZnovu, tlacitkoDomu, odkazDomu]);
+    mePozadi.setAttribute("class", "");
+    mePozadi.setAttribute("onclick", "");
+    SchovejElementy([hlavniKruh]);
 }
 
-function HideElements(elements) {
-    for (i = 0; i < elements.length; i++) {
-    elements[i].style.visibility = "hidden";
+function SchovejElementy(elementy) {
+    for (i = 0; i < elementy.length; i++) {
+    elementy[i].style.visibility = "hidden";
     }
 }
 
-function ShowElements(elements) {
-    for (i = 0; i < elements.length; i++) {
-    elements[i].style.visibility = "visible";
+function ZobrazElementy(elementy) {
+    for (i = 0; i < elementy.length; i++) {
+    elementy[i].style.visibility = "visible";
     }
 }
 
-function Replay() {
+function HrajZnovu() {
     location.reload();
 }

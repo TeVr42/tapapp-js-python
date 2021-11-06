@@ -1,102 +1,102 @@
-var srcImages;
+var zdrojeObrazku;
 
-var documentWidth;
-var documentHeight;
-var smallScreen = window.matchMedia("(max-width: 1024px)");
+var dokumentSirka;
+var dokumentVyska;
+var malaObrazovka = window.matchMedia("(max-width: 1024px)");
 
-var circleWidth;
-var circleX;
-var circleY;
+var kruhSirka;
+var kruhX;
+var kruhY;
 
-var score = 0;
-var gameIsOn = true;
+var skore = 0;
+var hraBezi = true;
 var i = 0;
 
-var scoreTitle = document.getElementById("scoreTitle");
-var buttonReplay = document.getElementById("buttonReplay");
+var skoreNapis = document.getElementById("skoreNapis");
+var tlacitkoZnovu = document.getElementById("tlacitkoZnovu");
 
-var mainTitle = document.getElementById("mainTitle");
-var buttonHome = document.getElementById("buttonHome");
-var anchorHome = document.getElementById("anchorHome");
+var hlavniNapis = document.getElementById("hlavniNapis");
+var tlacitkoDomu = document.getElementById("tlacitkoDomu");
+var odkazDomu = document.getElementById("odkazDomu");
 
-function Game(speed, sourceColors, prepared_circles=0) {
-    srcImages = sourceColors;
-    for (a = 0; a < prepared_circles; a++) {
-    NewCircle();
+function Hra(ryhlost, zdrojBarev, predpripraveneKruhy=0) {
+    zdrojObrazku = zdrojBarev;
+    for (a = 0; a < predpripraveneKruhy; a++) {
+    NovyKruh();
     }
-    setInterval(NewCircle, speed);
+    setInterval(NovyKruh, ryhlost);
 }
 
-function NewCircle() {
-    documentWidth = document.documentElement.clientWidth;
-    documentHeight = document.documentElement.clientHeight;
+function NovyKruh() {
+    dokumentSirka = document.documentElement.clientWidth;
+    dokumentVyska = document.documentElement.clientHeight;
 
-    if (smallScreen.matches) {
-    circleWidth = documentWidth * 0.15;
+    if (malaObrazovka.matches) {
+    kruhSirka = dokumentSirka * 0.15;
     } else {
-    circleWidth = documentWidth * 0.05;
+    kruhSirka = dokumentSirka * 0.05;
     }
 
-    if (gameIsOn) {
-    var circleNew = document.createElement("img");
-    var index = Math.floor(Math.random() * srcImages.length);
-    var source = srcImages[index];
+    if (hraBezi) {
+    var novyKruh = document.createElement("img");
+    var index = Math.floor(Math.random() * zdrojObrazku.length);
+    var zdroj = zdrojObrazku[index];
 
-    circleNew.setAttribute("src", "/static/images/" + source);
-    circleNew.setAttribute("id", "Circle" + i);
-    circleNew.setAttribute("class", "circle");
-    circleNew.setAttribute("onclick", "OnClick(event)");
-    document.body.appendChild(circleNew);
+    novyKruh.setAttribute("src", "/static/images/" + zdroj);
+    novyKruh.setAttribute("id", "Kruh" + i);
+    novyKruh.setAttribute("class", "kruh");
+    novyKruh.setAttribute("onclick", "PriKliknuti(event)");
+    document.body.appendChild(novyKruh);
 
-    circleX = Math.floor(Math.random() *(documentWidth - circleWidth));
-    circleY = Math.floor(Math.random() * (documentHeight - circleWidth));
+    kruhX = Math.floor(Math.random() * (dokumentSirka - kruhSirka));
+    kruhY = Math.floor(Math.random() * (dokumentVyska - kruhSirka));
 
-    circleNew.style.left = circleX + "px";
-    circleNew.style.top = circleY + "px";
+    novyKruh.style.left = kruhX + "px";
+    novyKruh.style.top = kruhY + "px";
 
     i++;
-}
+    }
 }
 
-function OnClick(event) {
+function PriKliknuti(event) {
     document.getElementById(event.target.id).remove();
 
-    score ++;
-    if (score < 10) {
-    scoreTitle.textContent = "0" + score;
+    skore ++;
+    if (skore < 10) {
+    skoreNapis.textContent = "0" + skore;
     } else {
-    scoreTitle.textContent = score;
+    skoreNapis.textContent = skore;
     }
 
-    var circles = document.getElementsByClassName("circle");
-    if (circles.length == 0) {
-        GameOver();
+    var kruhy = document.getElementsByClassName("kruh");
+    if (kruhy.length == 0) {
+        KonecHry();
     }
-    if (circles.length >= 100 || (circles.length >= 5 && score >= 250)) {
-        GameOver();
-        HideElements(circles);
-        mainTitle.textContent = "Příliš mnoho kruhů!";
+    if (kruhy.length >= 100 || (kruhy.length >= 5 && skore >= 250)) {
+        KonecHry();
+        SchovejElementy(kruhy);
+        hlavniNapis.textContent = "Příliš mnoho kruhů!";
     }
 }
 
-function GameOver() {
-        gameIsOn = false;
+function KonecHry() {
+        hraBezi = false;
         setTimeout(function(){
-        ShowElements([buttonReplay, buttonHome, anchorHome, mainTitle]);
+        ZobrazElementy([tlacitkoZnovu, tlacitkoDomu, odkazDomu, hlavniNapis]);
         }, 500)
 }
 
-function ShowElements(elements) {
-    for (i = 0; i < elements.length; i++) {
-    elements[i].style.visibility = "visible";
+function ZobrazElementy(elementy) {
+    for (i = 0; i < elementy.length; i++) {
+    elementy[i].style.visibility = "visible";
     }
 }
 
-function HideElements(elements) {
-    for (i = 0; i < elements.length; i++) {
-    elements[i].style.visibility = "hidden";
+function SchovejElementy(elementy) {
+    for (i = 0; i < elementy.length; i++) {
+    elementy[i].style.visibility = "hidden";
     }
 }
-function Replay() {
+function HrajZnovu() {
     location.reload();
 }
