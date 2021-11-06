@@ -45,8 +45,7 @@ function GenerateCircles() {
     var randomAction = Math.floor(Math.random() * 2);
     if (randomAction == 0) {
         var index = Math.floor(Math.random() * srcImages.length);
-        var source = srcImages[index];
-        var circleColor = "/static/images/" + source;
+        var circleColor = "/static/images/" + srcImages[index];
         MakeCircle(circleColor, "OnCircleClick(event, -5)");
     } else {
         MakeCircle(mainColor, "OnCircleClick(event, 2)");
