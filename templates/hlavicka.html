@@ -19,29 +19,27 @@
 	<link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
 
 	<style>
+
+	body, .zakladni-tlacitko, .mode-btn-light {
+		color: {{ hlavni_barva[0] }};
+	}
+
+	.btn:hover, .btn-light, .mode-btn-dark{
+		color: {{ hlavni_barva[1] }};
+	}
+
+	.btn-light, .mode-btn-dark, .pozadi_hra3, .btn:hover {
+		background-color: {{ hlavni_barva[0] }};
+	}
+
 	body {
-		color: {{hlavni_barva[0]}};
-		background-color: {{hlavni_barva[1]}};
+		background-color: {{ hlavni_barva[1] }};
 	}
 
-	.zakladni-tlacitko, .mode-btn-light {
-		color: {{hlavni_barva[0]}};
-		border-color: {{hlavni_barva[0]}};
+	.zakladni-tlacitko, .mode-btn-light, .btn:hover {
+		border-color: {{ hlavni_barva[0] }};
 	}
 
-	.btn-light, .mode-btn-dark {
-		background-color: {{hlavni_barva[0]}};
-		color: {{hlavni_barva[1]}};
-	}
-
-	.btn:hover {
-		color: {{hlavni_barva[1]}};
-		background-color: {{hlavni_barva[0]}};
-		border-color: {{hlavni_barva[0]}};
-	}
-	.pozadi_hra3 {
-		background-color: {{hlavni_barva[0]}};
-	}
 	</style>
 </head>
 
