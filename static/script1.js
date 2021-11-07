@@ -48,8 +48,13 @@ function NovyKruh() {
     novyKruh.setAttribute("onclick", "PriKliknuti(event)");
     document.body.appendChild(novyKruh);
 
+    if (malaObrazovka.matches) {
     kruhX = Math.floor(Math.random() * (dokumentSirka - kruhSirka));
     kruhY = Math.floor(Math.random() * (dokumentVyska - kruhSirka));
+    } else {
+    kruhX = Math.floor(Math.random() * (dokumentSirka*0.6 - kruhSirka)) + dokumentSirka*0.2;
+    kruhY = Math.floor(Math.random() * (dokumentVyska*0.8 - kruhSirka)) + dokumentVyska*0.1;
+    }
 
     novyKruh.style.left = kruhX + "px";
     novyKruh.style.top = kruhY + "px";
