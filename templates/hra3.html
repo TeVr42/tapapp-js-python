@@ -8,7 +8,7 @@
 
   </body>
 {% else: %}
-<body id="herniPozadi" onload="Hra()" onclick="SpatneKliknuti()">
+<body id="herniPozadi" onload="Hra()" onclick="KonecHry()">
     <h1 id="hlavniNapis" class="napis-odsazeni" style="visibility: hidden"> Moc brzo!</h1>
 	<button id="tlacitkoZnovu" class="{{ nastaveni['svetly_btn'] }}" onclick="HrajZnovu()" style="visibility: hidden">Hrát znovu ⏱</button>
     <a href="{{ url_for('barevny', barva=mode)}}" id="odkazDomu" style="visibility: hidden">

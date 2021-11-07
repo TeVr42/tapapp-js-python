@@ -4,7 +4,7 @@ var tlacitkoDomu = document.getElementById("tlacitkoDomu");
 var odkazDomu = document.getElementById("odkazDomu");
 var hlavniKruh = document.getElementById("kruhKeKliknuti");
 
-var mePozadi = document.getElementById("herniPozadi");
+var herniPozadi = document.getElementById("herniPozadi");
 
 var malaObrazovka = window.matchMedia("(max-width: 1024px)");
 
@@ -13,20 +13,20 @@ var hraBezi = true;
 
 function Hra() {
     var nahodnyCas = Math.floor(Math.random() * 5000) + 800;
-    setTimeout(ZacniOdpocet, nahodnyCas);
+    setTimeout(SpustCasomiru, nahodnyCas);
 }
 
-function ZacniOdpocet() {
+function SpustCasomiru() {
     if (hraBezi) {
     ZobrazElementy([hlavniKruh]);
-    mePozadi.setAttribute("class", "color_bg_game3");
-    mePozadi.setAttribute("onclick", "OnRightClick()");
+    herniPozadi.setAttribute("class", "pozadi_hra3");
+    herniPozadi.setAttribute("onclick", "PriSpravnemKliknuti()");
     start = Date.now();
     }
 }
 
 function PriSpravnemKliknuti() {
-    SpatneKliknuti();
+    KonecHry();
     var casovaProdleva = (Date.now() - start) + " milisekund";
     hlavniNapis.textContent = casovaProdleva;
     if (malaObrazovka.matches) {
@@ -37,11 +37,11 @@ function PriSpravnemKliknuti() {
 }
 
 
-function SpatneKliknuti() {
+function KonecHry() {
     hraBezi = false;
     ZobrazElementy([hlavniNapis, tlacitkoZnovu, tlacitkoDomu, odkazDomu]);
-    mePozadi.setAttribute("class", "");
-    mePozadi.setAttribute("onclick", "");
+    herniPozadi.setAttribute("class", "");
+    herniPozadi.setAttribute("onclick", "");
     SchovejElementy([hlavniKruh]);
 }
 

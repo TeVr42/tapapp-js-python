@@ -15,7 +15,7 @@ var minuty = 0;
 var rychlostMizeni;
 
 var velkyKruh = document.getElementById("velkyKruh");
-var hlavniKruh;
+var hlavniBarva;
 
 var tlacitkoZnovu = document.getElementById("tlacitkoZnovu");
 var hlavniNapis = document.getElementById("hlavniNapis");
@@ -29,36 +29,36 @@ function Hra(rychlost, zdrojeBarev) {
     var index = Math.floor(Math.random() * zdrojeObrazku.length);
     var zdroj = zdrojeObrazku[index];
     rychlostMizeni = rychlost;
-    hlavniKruh = "/static/images/" + zdroj;
-    velkyKruh.setAttribute("src", hlavniKruh);
+    hlavniBarva = "/static/images/" + zdroj;
+    velkyKruh.setAttribute("src", hlavniBarva);
     zdrojeObrazku.splice(index, 1);
 
     tlacitkoZnovu.style.position = "static";
     SchovejElementy([tlacitkoDomu, odkazDomu]);
     ZobrazElementy([velkyKruh, vypisCasu, vypisProcenta]);
     setInterval(GenerujKruhy, 200);
-    setInterval(TimeCounter, 1000)
+    setInterval(Casomira, 1000)
 }
 
 function GenerujKruhy() {
     if (hraBezi) {
-    var nahodnyAkce = Math.floor(Math.random() * 2);
-    if (nahodnyAkce == 0) {
+    var nahodnyKruh = Math.floor(Math.random() * 2);
+    if (nahodnyKruh == 0) {
         var index = Math.floor(Math.random() * zdrojeObrazku.length);
-        var barvaKruhu = "/static/images/" + zdrojeObrazku[index];
-        VytvorKruh(barvaKruhu, "PriKliknutiNaKruh(event, -5)");
+        var zbyleBarvy = "/static/images/" + zdrojeObrazku[index];
+        VytvorKruh(zbyleBarvy, "PriKliknutiNaKruh(event, -5)");
     } else {
-        VytvorKruh(hlavniKruh, "PriKliknutiNaKruh(event, 2)");
+        VytvorKruh(hlavniBarva, "PriKliknutiNaKruh(event, 2)");
     }
     }
 }
 
-function VytvorKruh(barvaKruhu, akce) {
+function VytvorKruh(zbyleBarvy, akce) {
     dokumentSirka = document.documentElement.clientWidth;
     dokumentVyska = document.documentElement.clientHeight;
 
     novyKruh = document.createElement("img");
-    novyKruh.setAttribute("src", barvaKruhu);
+    novyKruh.setAttribute("src", zbyleBarvy);
     novyKruh.setAttribute("id", "Kruh" + i);
     novyKruh.setAttribute("class", "kruh");
     novyKruh.setAttribute("onclick", akce);
@@ -118,7 +118,7 @@ function KonecHry() {
     }
 }
 
-function TimeCounter() {
+function Casomira() {
     if (hraBezi){
     sekundy ++;
 
