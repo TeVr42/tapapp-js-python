@@ -4,14 +4,14 @@ SVETLY = {
      "k21.png", "k23.png"],
     "hra2": ["k2.png", "k3.png", "k5.png", "k10.png", "k18.png"],
     "hra3": "k22.png",
-    "text_a_pozadi": ["#79a3b1", "#E1E5EA"],
+    "text_a_pozadi": ["#1F3C5C", "#fff"],
 }
 TMAVY = {
     "hlavni": "tmavy",
     "hra1": ["k1.png", "k6.png", "k7.png", "k8.png", "k11.png", "k12.png", "k13.png", "k14.png", "k15.png", "k20.png", "k22.png"],
     "hra2": ["k6.png", "k11.png", "k13.png"],
     "hra3": "k23.png",
-    "text_a_pozadi": ["#cbc5c1", "#4c586f"]
+    "text_a_pozadi": ["#F0E9D2", "#142F43"]
 }
 FIALOVY = {
     "hlavni": "fialovy",
@@ -19,7 +19,7 @@ FIALOVY = {
               "k21.png", "k23.png"],
     "hra2": ["k2.png", "k3.png", "k5.png", "k10.png", "k18.png"],
     "hra3": "k20.png",
-    "text_a_pozadi": ["#512D6D", "#EEEEEE"]
+    "text_a_pozadi": ["#480032", "#fff"]
 }
 
 NASTAVENI = {

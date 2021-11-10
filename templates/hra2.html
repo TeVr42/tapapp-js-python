@@ -3,7 +3,7 @@
 {% if not hra: %}
 <body>
 
-    <h1 class="napis-odsazeni"> Stejné barvy </h1>
+    <h1 class="napis-odsazeni"> Jak rychle? </h1>
     {% for nove_tlacitko in [[2000, "Pomalu 🐨"], [1400, "Středně 🦝"], [800, "Rychle 🐼"]]: %}
         <a href="{{ url_for('hra2', barva=mode, hra=1, rychlost=nove_tlacitko[0]) }}"><button class="{{ nastaveni['svetly_btn'] }}">{{ nove_tlacitko[1] }}</button></a>
     {% endfor %}

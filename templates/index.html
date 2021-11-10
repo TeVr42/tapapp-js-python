@@ -2,10 +2,10 @@
 
 <body>
 
-	<h1 class="napis-odsazeni"> Moje hry </h1>
-	<a href="{{ url_for('hra1', barva=mode, hra=0, rychlost=0, predpripravene_kruhy=0) }}"><button class="{{ nastaveni['svetly_btn'] }}">Vyčisti obrazovku</button></a>
-    <a href="{{ url_for('hra2', barva=mode, hra=0, rychlost=0) }}"><button class="{{ nastaveni['svetly_btn'] }}">Stejné barvy</button></a>
-    <a href="{{ url_for('hra3', barva=mode, hra=0) }}"><button class="{{ nastaveni['svetly_btn'] }}">Reakční doba</button></a>
+	<h1 class="napis-odsazeni"> Vyber si hru </h1>
+	<a href="{{ url_for('hra1', barva=mode, hra=0, rychlost=0, predpripravene_kruhy=0) }}"><button class="{{ nastaveni['svetly_btn'] }}">Vyčisti obrazovku 👀</button></a>
+    <a href="{{ url_for('hra2', barva=mode, hra=0, rychlost=0) }}"><button class="{{ nastaveni['svetly_btn'] }}">Stejné barvy 🎯</button></a>
+    <a href="{{ url_for('hra3', barva=mode, hra=0) }}"><button class="{{ nastaveni['svetly_btn'] }}">Reakční doba ⏱</button></a>
     <a href="{{ url_for('info', barva=mode) }}"><button class="{{ nastaveni['tmavy_btn'] }}">Jak hrát ? </button></a>
 
     <div class="btn-group barva-tlacitka" style="margin-top: 20px">
