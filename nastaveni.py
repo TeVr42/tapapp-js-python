@@ -15,10 +15,10 @@ TMAVY = {
 }
 FIALOVY = {
     "hlavni": "fialovy",
-    "hra1": ["k2.png", "k3.png", "k4.png", "k5.png", "k9.png", "k10.png", "k16.png", "k17.png", "k18.png", "k19.png",
-              "k21.png", "k23.png"],
-    "hra2": ["k2.png", "k3.png", "k5.png", "k10.png", "k18.png"],
-    "hra3": "k20.png",
+    "hra1": ["k2.png", "k3.png", "k5.png", "k11.png", "k15.png", "k18.png", "k19.png",
+              "k20.png", "k23.png"],
+    "hra2": ["k2.png", "k3.png", "k5.png", "k11.png", "k15.png", "k18.png"],
+    "hra3": "k10.png",
     "text_a_pozadi": ["#FEF1E6", "#852747"]
 }
 
