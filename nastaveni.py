@@ -11,7 +11,7 @@ TMAVY = {
     "hra1": ["k1.png", "k6.png", "k7.png", "k8.png", "k11.png", "k12.png", "k13.png", "k14.png", "k15.png", "k20.png", "k22.png"],
     "hra2": ["k6.png", "k11.png", "k13.png"],
     "hra3": "k23.png",
-    "text_a_pozadi": ["#F0E9D2", "#142F43"]
+    "text_a_pozadi": ["#fff", "#142F43"]
 }
 FIALOVY = {
     "hlavni": "fialovy",
@@ -19,7 +19,7 @@ FIALOVY = {
               "k21.png", "k23.png"],
     "hra2": ["k2.png", "k3.png", "k5.png", "k10.png", "k18.png"],
     "hra3": "k20.png",
-    "text_a_pozadi": ["#480032", "#fff"]
+    "text_a_pozadi": ["#FEF1E6", "#852747"]
 }
 
 NASTAVENI = {
