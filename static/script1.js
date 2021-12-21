@@ -38,11 +38,11 @@ function NovyKruh() {
     }
 
     if (hraBezi) {
-    var novyKruh = document.createElement("img");
+    var novyKruh = document.createElement("div");
     var index = Math.floor(Math.random() * zdrojObrazku.length);
     var zdroj = zdrojObrazku[index];
 
-    novyKruh.setAttribute("src", "/static/images/" + zdroj);
+    novyKruh.style.backgroundColor = zdroj;
     novyKruh.setAttribute("id", "Kruh" + i);
     novyKruh.setAttribute("class", "kruh");
     novyKruh.setAttribute("onclick", "PriKliknuti(event)");
@@ -93,13 +93,13 @@ function KonecHry() {
 
 function ZobrazElementy(elementy) {
     for (i = 0; i < elementy.length; i++) {
-    elementy[i].style.visibility = "visible";
+    elementy[i].style.display = "inline-block";
     }
 }
 
 function SchovejElementy(elementy) {
     for (i = 0; i < elementy.length; i++) {
-    elementy[i].style.visibility = "hidden";
+    elementy[i].style.display = "none";
     }
 }
 function HrajZnovu() {

@@ -1,11 +1,11 @@
 from flask import Flask, render_template
-from nastaveni import NASTAVENI, SVETLY, TMAVY, FIALOVY
+from nastaveni import NASTAVENI, SVETLY, MODRY, CERVENY
 
 app = Flask(__name__)
 
 
 def urci_barvu(barva):
-    for barva_mode in [SVETLY, FIALOVY, TMAVY]:
+    for barva_mode in [SVETLY, CERVENY, MODRY]:
         if barva == barva_mode["hlavni"]:
             return barva_mode
 
@@ -19,7 +19,7 @@ def bezi_hra(hra):
 
 @app.route('/')
 def domu():
-    return render_template("index.html", mode=TMAVY["hlavni"], nastaveni=NASTAVENI, napis="Domů", hlavni_barva=TMAVY["text_a_pozadi"])
+    return render_template("index.html", mode=MODRY["hlavni"], nastaveni=NASTAVENI, napis="Domů", hlavni_barva=MODRY["text_a_pozadi"])
 
 
 @app.route('/<barva>')
@@ -47,7 +47,7 @@ def hra2(barva, hra, rychlost):
 def hra3(barva, hra):
     barevny_mod = urci_barvu(barva)
     return render_template("hra3.html",
-                           hra=bezi_hra(hra), mode=barevny_mod["hlavni"], kruhy=barevny_mod["hra3"],
+                           hra=bezi_hra(hra), mode=barevny_mod["hlavni"],
                            nastaveni=NASTAVENI, napis="Reakční doba", hlavni_barva=barevny_mod["text_a_pozadi"])
 
 

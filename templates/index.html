@@ -3,13 +3,21 @@
 <body>
 
 	<h1 class="napis-odsazeni"> Vyber si hru </h1>
-	<a href="{{ url_for('hra1', barva=mode, hra=0, rychlost=0, predpripravene_kruhy=0) }}"><button class="{{ nastaveni['svetly_btn'] }}">Vyčisti obrazovku 👀</button></a>
-    <a href="{{ url_for('hra2', barva=mode, hra=0, rychlost=0) }}"><button class="{{ nastaveni['svetly_btn'] }}">Stejné barvy 🎯</button></a>
-    <a href="{{ url_for('hra3', barva=mode, hra=0) }}"><button class="{{ nastaveni['svetly_btn'] }}">Reakční doba ⏱</button></a>
-    <a href="{{ url_for('info', barva=mode) }}"><button class="{{ nastaveni['tmavy_btn'] }}">Jak hrát ? </button></a>
+	<a href="{{ url_for('hra1', barva=mode, hra=0, rychlost=0, predpripravene_kruhy=0) }}">
+        <button class="{{ nastaveni['svetly_btn'] }}">Vyčisti obrazovku 👀</button>
+    </a>
+    <a href="{{ url_for('hra2', barva=mode, hra=0, rychlost=0) }}">
+        <button class="{{ nastaveni['svetly_btn'] }}">Stejné barvy 🎯</button>
+    </a>
+    <a href="{{ url_for('hra3', barva=mode, hra=0) }}">
+        <button class="{{ nastaveni['svetly_btn'] }}">Reakční doba ⏱</button>
+    </a>
+    <a href="{{ url_for('info', barva=mode) }}">
+        <button class="{{ nastaveni['tmavy_btn'] }}">Jak hrát ? </button>
+    </a>
 
     <div class="btn-group barva-tlacitka" style="margin-top: 20px">
-    {% for nove_tlacitko in [["svetly", "Světlý"], ["tmavy", "Tmavý"], ["fialovy", "Fialový"]]: %}
+            {% for nove_tlacitko in [["svetly", "Světlý"], ["modry", "Modrý"], ["cerveny", "Červený"]]: %}
 
         {% if mode == nove_tlacitko[0]: %}
       <a href="{{ url_for('barevny', barva=nove_tlacitko[0]) }}" class="{{ nastaveni['mode_svetly_btn'] }}">{{nove_tlacitko[1]}}</a>

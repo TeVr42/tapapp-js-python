@@ -6,18 +6,22 @@
 
 	<h1 class="napis-odsazeni"> Zvol si level </h1>
     {% for nove_tlacitko in [[700, "Začátečník 🐭", 10], [500, "Pokročilý 🐰", 5], [450, "Expert 🐺", 2], [350, "Mistr 🦏", 0]]: %}
-    <a href="{{ url_for('hra1', barva=mode, hra=1, rychlost=nove_tlacitko[0], predpripravene_kruhy=nove_tlacitko[2]) }}"><button class="{{ nastaveni['svetly_btn'] }}">{{ nove_tlacitko[1] }}</button></a>
+    <a href="{{ url_for('hra1', barva=mode, hra=1, rychlost=nove_tlacitko[0], predpripravene_kruhy=nove_tlacitko[2]) }}">
+        <button class="{{ nastaveni['svetly_btn'] }}">{{ nove_tlacitko[1] }}</button>
+    </a>
     {% endfor %}
-    <a href="{{ url_for('barevny', barva=mode)}}" ><button class="{{ nastaveni['tmavy_btn'] }}">Domů 🏠</button></a>
+    <a href="{{ url_for('barevny', barva=mode)}}" >
+        <button class="{{ nastaveni['tmavy_btn'] }}">Domů 🏠</button>
+    </a>
 </body>
 
 {% else: %}
 <body onload="Hra({{ rychlost }}, {{ barvy_kruhu }}, {{ predpripravene_kruhy }})">
 	<h2 id="skoreNapis"> 00 </h2>
-    <h1 id="hlavniNapis" style="visibility: hidden" class="napis-spodni-odsazeni"> Uklizeno! </h1>
-	<button id="tlacitkoZnovu" class="{{ nastaveni['svetly_btn'] }}" onclick="HrajZnovu()" style="visibility: hidden">Hrát znovu 🐘</button>
-    <a id="odkazDomu" href="{{ url_for('barevny', barva=mode)}}" style="visibility: hidden">
-        <button  id="tlacitkoDomu" class="{{ nastaveni['tmavy_btn'] }}" style="visibility: hidden">Domů 🏠</button>
+    <h1 id="hlavniNapis" style="display: none" class="napis-spodni-odsazeni"> Uklizeno! </h1>
+	<button id="tlacitkoZnovu" class="{{ nastaveni['svetly_btn'] }}" onclick="HrajZnovu()" style="display: none">Hrát znovu 🐘</button>
+    <a id="odkazDomu" href="{{ url_for('barevny', barva=mode)}}" style="display: none">
+        <button  id="tlacitkoDomu" class="{{ nastaveni['tmavy_btn'] }}" style="display: none">Domů 🏠</button>
     </a>
 <script src="{{ url_for('static', filename='script1.js') }}"></script>
 </body>

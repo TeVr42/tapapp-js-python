@@ -27,12 +27,10 @@ var vypisProcenta = document.getElementById("vypisProcenta");
 function Hra(rychlost, zdrojeBarev) {
     zdrojeObrazku = zdrojeBarev;
     var index = Math.floor(Math.random() * zdrojeObrazku.length);
-    var zdroj = zdrojeObrazku[index];
     rychlostMizeni = rychlost;
-    hlavniBarva = "/static/images/" + zdroj;
-    velkyKruh.setAttribute("src", hlavniBarva);
+    hlavniBarva = zdrojeObrazku[index];
+    velkyKruh.style.backgroundColor = hlavniBarva;
     zdrojeObrazku.splice(index, 1);
-
     tlacitkoZnovu.style.position = "static";
     SchovejElementy([tlacitkoDomu, odkazDomu]);
     ZobrazElementy([velkyKruh, vypisCasu, vypisProcenta]);
@@ -45,7 +43,7 @@ function GenerujKruhy() {
     var nahodnyKruh = Math.floor(Math.random() * 2);
     if (nahodnyKruh == 0) {
         var index = Math.floor(Math.random() * zdrojeObrazku.length);
-        var zbyleBarvy = "/static/images/" + zdrojeObrazku[index];
+        var zbyleBarvy = zdrojeObrazku[index];
         VytvorKruh(zbyleBarvy, "PriKliknutiNaKruh(event, -5)");
     } else {
         VytvorKruh(hlavniBarva, "PriKliknutiNaKruh(event, 2)");
@@ -57,8 +55,8 @@ function VytvorKruh(zbyleBarvy, akce) {
     dokumentSirka = document.documentElement.clientWidth;
     dokumentVyska = document.documentElement.clientHeight;
 
-    novyKruh = document.createElement("img");
-    novyKruh.setAttribute("src", zbyleBarvy);
+    novyKruh = document.createElement("div");
+    novyKruh.style.backgroundColor = zbyleBarvy;
     novyKruh.setAttribute("id", "Kruh" + i);
     novyKruh.setAttribute("class", "kruh");
     novyKruh.setAttribute("onclick", akce);
@@ -88,8 +86,10 @@ function PriKliknutiNaKruh(event, zmenaSkore) {
     document.getElementById(event.target.id).remove();
     if (malaObrazovka.matches) {
     velkyKruh.style.width = 2 * skore + "%";
+    velkyKruh.style.paddingBottom = 2 * skore + "%";
     } else {
     velkyKruh.style.width = skore + "%";
+    velkyKruh.style.paddingBottom = skore + "%";
     }
     vypisProcenta.textContent = skore * 5 + "%";
     if (skore >= 20) {
@@ -106,16 +106,12 @@ function PriKliknutiNaKruh(event, zmenaSkore) {
 
 function KonecHry() {
     hraBezi = false;
-    hlavniNapis.style.visibility = "visible";
+    hlavniNapis.style.display = "inline-block";
     var kruhy = document.getElementsByClassName("kruh");
     SchovejElementy(kruhy);
     velkyKruh.remove();
     ZobrazElementy([tlacitkoZnovu, tlacitkoDomu, odkazDomu]);
-    if (malaObrazovka.matches) {
-    hlavniNapis.style.fontSize = "3.5rem";
-    } else {
-    hlavniNapis.style.fontSize = "5rem";
-    }
+    hlavniNapis.setAttribute("class", "nejvetsi-text");
 }
 
 function Casomira() {
@@ -148,13 +144,13 @@ function Casomira() {
 
 function SchovejElementy(elementy) {
     for (i = 0; i < elementy.length; i++) {
-    elementy[i].style.visibility = "hidden";
+    elementy[i].style.display = "none";
     }
 }
 
 function ZobrazElementy(elementy) {
     for (i = 0; i < elementy.length; i++) {
-    elementy[i].style.visibility = "visible";
+    elementy[i].style.display = "inline-block";
     }
 }
 
