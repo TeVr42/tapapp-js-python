@@ -80,7 +80,7 @@ function PriKliknuti(event) {
     if (kruhy.length >= 100 || (kruhy.length >= 5 && skore >= 250)) {
         KonecHry();
         SchovejElementy(kruhy);
-        hlavniNapis.textContent = "Příliš mnoho kruhů!";
+        hlavniNapis.textContent = "Zkus to znovu!";
     }
 }
 

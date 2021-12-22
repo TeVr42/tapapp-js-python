@@ -3,7 +3,7 @@ body {
     font-family: 'Montserrat', sans-serif;
     display: flex;
     flex-direction: column;
-    touch-action: none;
+    touch-action: manipulation;
 }
 
 h1, h2, h3 {
