@@ -1,4 +1,4 @@
-var zdrojeObrazku;
+var seznamBarev;
 
 var dokumentSirka;
 var dokumentVyska;
@@ -24,13 +24,13 @@ var tlacitkoDomu = document.getElementById("tlacitkoDomu");
 var odkazDomu = document.getElementById("odkazDomu");
 var vypisProcenta = document.getElementById("vypisProcenta");
 
-function Hra(rychlost, zdrojeBarev) {
-    zdrojeObrazku = zdrojeBarev;
-    var index = Math.floor(Math.random() * zdrojeObrazku.length);
+function Hra(rychlost, prilozenySeznamBarev) {
+    seznamBarev = prilozenySeznamBarev;
+    var index = Math.floor(Math.random() * seznamBarev.length);
     rychlostMizeni = rychlost;
-    hlavniBarva = zdrojeObrazku[index];
+    hlavniBarva = seznamBarev[index];
     velkyKruh.style.backgroundColor = hlavniBarva;
-    zdrojeObrazku.splice(index, 1);
+    seznamBarev.splice(index, 1);
     tlacitkoZnovu.style.position = "static";
     SchovejElementy([tlacitkoDomu, odkazDomu]);
     ZobrazElementy([velkyKruh, vypisCasu, vypisProcenta]);
@@ -42,21 +42,21 @@ function GenerujKruhy() {
     if (hraBezi) {
     var nahodnyKruh = Math.floor(Math.random() * 2);
     if (nahodnyKruh == 0) {
-        var index = Math.floor(Math.random() * zdrojeObrazku.length);
-        var zbyleBarvy = zdrojeObrazku[index];
-        VytvorKruh(zbyleBarvy, "PriKliknutiNaKruh(event, -5)");
+        var index = Math.floor(Math.random() * seznamBarev.length);
+        var nahodnaVedlejsiBarva = seznamBarev[index];
+        VytvorKruh(nahodnaVedlejsiBarva, "PriKliknutiNaKruh(event, -5)");
     } else {
         VytvorKruh(hlavniBarva, "PriKliknutiNaKruh(event, 2)");
     }
     }
 }
 
-function VytvorKruh(zbyleBarvy, akce) {
+function VytvorKruh(nahodnaVedlejsiBarva, akce) {
     dokumentSirka = document.documentElement.clientWidth;
     dokumentVyska = document.documentElement.clientHeight;
 
     novyKruh = document.createElement("div");
-    novyKruh.style.backgroundColor = zbyleBarvy;
+    novyKruh.style.backgroundColor = nahodnaVedlejsiBarva;
     novyKruh.setAttribute("id", "Kruh" + i);
     novyKruh.setAttribute("class", "kruh");
     novyKruh.setAttribute("onclick", akce);

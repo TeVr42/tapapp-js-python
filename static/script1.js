@@ -19,8 +19,8 @@ var hlavniNapis = document.getElementById("hlavniNapis");
 var tlacitkoDomu = document.getElementById("tlacitkoDomu");
 var odkazDomu = document.getElementById("odkazDomu");
 
-function Hra(ryhlost, zdrojBarev, predpripraveneKruhy=0) {
-    zdrojObrazku = zdrojBarev;
+function Hra(ryhlost, prilozenySeznamBarev, predpripraveneKruhy=0) {
+    seznamBarev = prilozenySeznamBarev;
     for (a = 0; a < predpripraveneKruhy; a++) {
     NovyKruh();
     }
@@ -39,8 +39,8 @@ function NovyKruh() {
 
     if (hraBezi) {
     var novyKruh = document.createElement("div");
-    var index = Math.floor(Math.random() * zdrojObrazku.length);
-    var zdroj = zdrojObrazku[index];
+    var index = Math.floor(Math.random() * seznamBarev.length);
+    var zdroj = seznamBarev[index];
 
     novyKruh.style.backgroundColor = zdroj;
     novyKruh.setAttribute("id", "Kruh" + i);
