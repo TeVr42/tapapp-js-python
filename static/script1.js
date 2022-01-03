@@ -1,4 +1,4 @@
-var zdrojeObrazku;
+var nahodnaBarvaeObrazku;
 
 var dokumentSirka;
 var dokumentVyska;
@@ -40,9 +40,9 @@ function NovyKruh() {
     if (hraBezi) {
     var novyKruh = document.createElement("div");
     var index = Math.floor(Math.random() * seznamBarev.length);
-    var zdroj = seznamBarev[index];
+    var nahodnaBarva = seznamBarev[index];
 
-    novyKruh.style.backgroundColor = zdroj;
+    novyKruh.style.backgroundColor = nahodnaBarva;
     novyKruh.setAttribute("id", "Kruh" + i);
     novyKruh.setAttribute("class", "kruh");
     novyKruh.setAttribute("onclick", "PriKliknuti(event)");
