@@ -17,7 +17,6 @@ CERVENY = {
     "hra2": ["#F0FFF3", "#11CBD7", "#F30E5C"],
     "text_a_pozadi": ["#F2F2F2", "#852747"]
 }
-
 NASTAVENI = {
     "svetly_btn": "zakladni-tlacitko btn btn-outline-light btn-lg",
     "tmavy_btn": "zakladni-tlacitko btn btn-light btn-lg",
